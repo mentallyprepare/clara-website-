@@ -743,7 +743,7 @@ button:focus-visible {
 .button--light { background: #fff; border: 1px solid #fff; color: #1b1b3c; }
 .button--outline-light { border: 1px solid rgba(255,255,255,.3); color: #fff; }
 .site-footer { align-items: center; color: #6f7482; display: flex; font-size: .8rem; justify-content: space-between; margin: 0 auto; max-width: 90rem; padding: 2rem clamp(1.25rem,4vw,5rem) 3rem; }
-.site-footer a { color: #373653; font-weight: 600; }
+.site-footer a { align-items: center; color: #373653; display: inline-flex; font-weight: 600; min-height: 2.75rem; }
 
 @media (max-width: 720px) {
   .site-header {
