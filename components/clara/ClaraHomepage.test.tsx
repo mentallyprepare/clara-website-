@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ClaraHomepage } from "./ClaraHomepage";
 
@@ -24,6 +24,10 @@ describe("Clara homepage", () => {
 
   it("shows the full action path and human boundary", () => {
     render(<ClaraHomepage />);
+    const actionPath = screen.getByRole("list", {
+      name: /conversation-to-action workflow/i,
+    });
+    expect(within(actionPath).getAllByRole("listitem")).toHaveLength(4);
     expect(screen.getByText("Can we move it to Friday?")).toBeVisible();
     expect(screen.getByText(/available slots/i)).toBeVisible();
     expect(screen.getAllByText(/booking updated/i).length).toBeGreaterThan(0);
