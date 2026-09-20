@@ -8,7 +8,7 @@ describe("Clara homepage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /conversations should move work forward/i,
+        name: /^conversations should move work forward\.$/i,
       }),
     ).toBeVisible();
     const talkLinks = screen.getAllByRole("link", { name: "Talk to Clara" });

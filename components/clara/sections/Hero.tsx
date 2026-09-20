@@ -65,7 +65,7 @@ export function Hero() {
             <Sparkles aria-hidden="true" size={14} /> Agentic AI for customer
             conversations
           </p>
-          <h1>Your conversations should move work forward.</h1>
+          <h1>Conversations should move work forward.</h1>
           <p className="hero__summary">
             Clara listens across calls, your website and WhatsApp, then safely
             completes the next approved step. Your team stays in control when

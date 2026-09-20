@@ -9,7 +9,7 @@ describe("Clara hero", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /conversations should move work forward/i,
+        name: /^conversations should move work forward\.$/i,
       }),
     ).toBeVisible();
     expect(

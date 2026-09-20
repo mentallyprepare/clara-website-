@@ -463,15 +463,46 @@ button:focus-visible {
 }
 
 .hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(19rem, 0.78fr) minmax(35rem, 1.22fr);
   margin: 0 auto;
-  max-width: 90rem;
-  padding: clamp(4.5rem, 8vw, 7.5rem) clamp(1.25rem, 4vw, 5rem) 7rem;
+  max-width: 96rem;
+  min-height: calc(100svh - 5rem);
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.25rem, 4vw, 4rem);
+  position: relative;
+}
+
+.hero::before {
+  background-image: radial-gradient(rgba(82, 73, 139, 0.19) 0.75px, transparent 0.75px);
+  background-size: 17px 17px;
+  content: "";
+  inset: 2rem 0 1rem 34%;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 74%);
+  opacity: 0.58;
+  pointer-events: none;
+  position: absolute;
+}
+
+.hero::after {
+  background: radial-gradient(circle, rgba(198, 192, 255, 0.35), rgba(235, 233, 255, 0.12) 42%, transparent 70%);
+  content: "";
+  height: 42rem;
+  pointer-events: none;
+  position: absolute;
+  right: -12rem;
+  top: -14rem;
+  width: 42rem;
 }
 
 .hero__intro {
-  margin: 0 auto clamp(3rem, 5vw, 4.5rem);
-  max-width: 68rem;
-  text-align: center;
+  margin: 0;
+  max-width: 35rem;
+  position: relative;
+  text-align: left;
+  z-index: 2;
 }
 
 .hero__eyebrow {
@@ -486,12 +517,12 @@ button:focus-visible {
 
 .hero h1 {
   color: #1b1b3c;
-  font-size: clamp(3.1rem, 7vw, 6.35rem);
+  font-size: clamp(3.35rem, 4.75vw, 5.15rem);
   font-weight: 500;
-  letter-spacing: -0.065em;
-  line-height: 0.94;
-  margin: 0 auto;
-  max-width: 12ch;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+  margin: 0;
+  max-width: 10.5ch;
   text-wrap: balance;
 }
 
@@ -499,9 +530,8 @@ button:focus-visible {
   color: #61676b;
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.6;
-  margin: 1.8rem auto 0;
-  max-width: 43rem;
-  text-wrap: balance;
+  margin: 1.6rem 0 0;
+  max-width: 34rem;
 }
 
 .hero__actions {
@@ -509,8 +539,8 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: flex-start;
+  margin-top: 1.8rem;
 }
 
 .button {
@@ -558,6 +588,8 @@ button:focus-visible {
   color: #fff;
   overflow: hidden;
   position: relative;
+  width: 100%;
+  z-index: 2;
 }
 
 .hero-demo::before {
@@ -576,8 +608,8 @@ button:focus-visible {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
-  min-height: 4.25rem;
-  padding: 0 1.4rem;
+  min-height: 3.6rem;
+  padding: 0 1.15rem;
   position: relative;
   z-index: 2;
 }
@@ -611,25 +643,21 @@ button:focus-visible {
 
 .hero-demo__layout {
   display: grid;
-  grid-template-columns: minmax(14rem, 0.74fr) minmax(0, 2.1fr);
-  min-height: 37rem;
+  grid-template-columns: 1fr;
   position: relative;
   z-index: 1;
 }
 
 .hero-scenarios {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding: clamp(1.4rem, 3vw, 2.4rem) 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0.7rem;
 }
 
 .hero-scenarios > p {
-  color: #77788c;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  margin: 0 0 1rem;
-  padding: 0 0.7rem;
-  text-transform: uppercase;
+  display: none;
 }
 
 .hero-scenario {
@@ -643,8 +671,8 @@ button:focus-visible {
   font: inherit;
   gap: 0.75rem;
   grid-template-columns: auto 1fr auto;
-  min-height: 5.25rem;
-  padding: 0.85rem 0.7rem;
+  min-height: 4.1rem;
+  padding: 0.65rem;
   text-align: left;
   transition: background 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms ease;
   width: 100%;
@@ -664,7 +692,7 @@ button:focus-visible {
   background: linear-gradient(135deg, rgba(119, 102, 255, 0.2), rgba(255, 255, 255, 0.055));
   border-color: rgba(165, 157, 255, 0.25);
   color: #fff;
-  transform: translateX(0.3rem);
+  transform: translateY(-0.16rem);
 }
 
 .hero-scenario__number {
@@ -679,14 +707,14 @@ button:focus-visible {
 }
 
 .hero-scenario strong {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   line-height: 1.25;
 }
 
 .hero-scenario small {
   color: #797a8d;
-  font-size: 0.69rem;
-  margin-top: 0.35rem;
+  font-size: 0.64rem;
+  margin-top: 0.25rem;
 }
 
 .hero-scenario > svg {
@@ -705,18 +733,19 @@ button:focus-visible {
   grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
   grid-template-rows: 1fr auto;
   overflow: hidden;
-  padding: clamp(1.25rem, 3vw, 2.6rem);
+  min-height: 22rem;
+  padding: clamp(1rem, 2.1vw, 1.75rem);
   position: relative;
 }
 
 .hero-intelligence {
-  height: 23rem;
+  height: 17rem;
   left: 51%;
   pointer-events: none;
   position: absolute;
   top: 45%;
   transform: translate(-50%, -50%);
-  width: 23rem;
+  width: 17rem;
 }
 
 .hero-intelligence__halo,
@@ -743,16 +772,16 @@ button:focus-visible {
     radial-gradient(circle at 35% 70%, #6a52e0, transparent 45%),
     conic-gradient(from 40deg, #eeecff, #7b6de9, #342461, #b5adff, #f8f7ff);
   box-shadow: inset -1.5rem -1rem 3rem rgba(16, 10, 48, 0.62), inset 1rem 0.5rem 2rem rgba(255, 255, 255, 0.3), 0 0 4rem rgba(112, 91, 255, 0.34);
-  height: 7rem;
+  height: 6rem;
   opacity: 0.9;
-  width: 7rem;
+  width: 6rem;
 }
 
 .hero-intelligence__spark {
   animation: clara-orbit 8s linear infinite;
   border: 1px solid rgba(202, 197, 255, 0.24);
-  height: 10.5rem;
-  width: 10.5rem;
+  height: 9rem;
+  width: 9rem;
 }
 
 .hero-intelligence__spark::after {
@@ -941,7 +970,7 @@ button:focus-visible {
   font-size: 0.67rem;
   grid-template-columns: repeat(3, 1fr);
   letter-spacing: 0.02em;
-  padding: 1rem 1.4rem;
+  padding: 0.8rem 1.15rem;
   position: relative;
   z-index: 2;
 }
@@ -1138,6 +1167,32 @@ button:focus-visible {
 .site-footer a { align-items: center; color: #373653; display: inline-flex; font-weight: 600; min-height: 2.75rem; }
 
 @media (max-width: 980px) {
+  .hero {
+    gap: 3.25rem;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block: 5rem;
+  }
+
+  .hero__intro {
+    margin-inline: auto;
+    max-width: 62rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin-inline: auto;
+    max-width: 13ch;
+  }
+
+  .hero__summary {
+    margin-inline: auto;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
   .hero-demo__layout {
     grid-template-columns: 1fr;
   }
@@ -1229,7 +1284,8 @@ button:focus-visible {
   }
 
   .hero {
-    padding: 4.5rem 1rem 5rem;
+    gap: 2.5rem;
+    padding: 3.5rem 1rem 4.5rem;
   }
 
   .hero h1 {
