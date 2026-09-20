@@ -1,5 +1,8 @@
 import { navigationItems } from "@/lib/clara-content";
+import { AfterHello } from "./sections/AfterHello";
+import { EverydayWork } from "./sections/EverydayWork";
 import { Hero } from "./sections/Hero";
+import { OperatingSystem } from "./sections/OperatingSystem";
 
 function ClaraMark() {
   return (
@@ -38,7 +41,9 @@ export function ClaraHomepage() {
       </header>
       <main>
         <Hero />
-        <div aria-hidden="true" id="after-hello" />
+        <AfterHello />
+        <OperatingSystem />
+        <EverydayWork />
         <div aria-hidden="true" id="claralens" />
         <div aria-hidden="true" id="invitation" />
       </main>
