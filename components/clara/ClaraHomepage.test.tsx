@@ -37,4 +37,27 @@ describe("Clara homepage", () => {
       }),
     ).toBeVisible();
   });
+
+  it("connects implementation, evidence, and the final invitation", () => {
+    render(<ClaraHomepage />);
+    expect(
+      screen.getByRole("heading", { name: /number you need to move/i }),
+    ).toBeVisible();
+    expect(screen.getByText("Listen")).toBeVisible();
+    expect(screen.getByText("Check")).toBeVisible();
+    expect(screen.getByText("Change")).toBeVisible();
+    expect(screen.getByText("Measure again")).toBeVisible();
+    expect(
+      screen.getByRole("heading", {
+        name: /every score should be able to show its work/i,
+      }),
+    ).toBeVisible();
+    expect(screen.getByText(/evidence found in transcript/i)).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: /conversation worth fixing/i }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("link", { name: "Book a working session" }),
+    ).toBeVisible();
+  });
 });
