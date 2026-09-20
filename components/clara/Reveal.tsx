@@ -13,9 +13,9 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const reducedMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
       setVisible(true);
