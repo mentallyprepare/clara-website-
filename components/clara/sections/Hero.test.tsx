@@ -16,7 +16,7 @@ describe("Clara hero", () => {
       screen.getByRole("group", { name: /choose a conversation/i }),
     ).toBeVisible();
     expect(screen.getByText("Booking updated")).toBeVisible();
-    expect(screen.getByText(/completed with your rules/i)).toBeVisible();
+    expect(screen.getByText(/approved rules checked/i)).toBeVisible();
   });
 
   it("switches the visible conversation and outcome", () => {

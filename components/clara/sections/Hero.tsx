@@ -4,13 +4,14 @@ import {
   ArrowRight,
   CalendarCheck2,
   Check,
-  CircleDot,
+  Clock3,
   MessageSquareText,
   Play,
   ShieldCheck,
   Sparkles,
   UserRoundCheck,
 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "../Reveal";
 
@@ -82,24 +83,27 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <Reveal className="hero-demo" delay={100}>
-        <div className="hero-demo__topbar">
-          <span className="hero-demo__title">
-            <span className="hero-demo__live" aria-hidden="true" />
-            Live agent activity
-          </span>
-          <span className="hero-demo__guardrail">
-            <ShieldCheck aria-hidden="true" size={14} /> Working within your rules
-          </span>
+      <Reveal className="hero-story" delay={100}>
+        <div className="hero-story__photo">
+          <Image
+            alt="A customer service professional speaking with a customer"
+            fill
+            priority
+            sizes="(max-width: 980px) 100vw, 48vw"
+            src="/images/clara-hero.webp"
+          />
+          <div className="hero-story__photo-label">
+            <span className="hero-story__live" aria-hidden="true" />
+            Live customer conversation
+          </div>
         </div>
 
-        <div className="hero-demo__layout">
+        <div className="hero-story__evidence">
           <div
             aria-label="Choose a conversation"
             className="hero-scenarios"
             role="group"
           >
-            <p>See Clara at work</p>
             {scenarios.map((scenario, index) => (
               <button
                 aria-pressed={scenario.id === activeId}
@@ -109,65 +113,45 @@ export function Hero() {
                 type="button"
               >
                 <span className="hero-scenario__number">0{index + 1}</span>
-                <span>
-                  <strong>{scenario.label}</strong>
-                  <small>{scenario.channel}</small>
-                </span>
-                <ArrowRight aria-hidden="true" size={16} />
+                <span>{scenario.label}</span>
               </button>
             ))}
           </div>
 
-          <div className="hero-workspace">
-            <div className="hero-intelligence" aria-hidden="true">
-              <span className="hero-intelligence__halo" />
-              <span className="hero-intelligence__surface" />
-              <span className="hero-intelligence__spark" />
-            </div>
-
-            <div className="hero-transcript">
-              <div className="hero-transcript__head">
-                <span>
-                  <MessageSquareText aria-hidden="true" size={16} /> Live conversation
-                </span>
-                <small>{active.channel}</small>
-              </div>
-              <div className="hero-turn">
-                <span>Customer</span>
-                <p>{active.customer}</p>
-              </div>
-              <div className="hero-turn hero-turn--clara">
-                <span>Clara</span>
-                <p>{active.clara}</p>
-              </div>
-            </div>
-
-            <div className="hero-state" aria-label="Clara action state">
-              <span><Check aria-hidden="true" size={13} /> Understood</span>
-              <span><Check aria-hidden="true" size={13} /> Rules checked</span>
-              <span className="hero-state__active"><CircleDot aria-hidden="true" size={13} /> Action complete</span>
-            </div>
-
-            <div className="hero-outcome" aria-live="polite">
-              <span className="hero-outcome__icon">
-                <OutcomeIcon aria-hidden="true" size={20} />
-              </span>
+          <div className="hero-transcript">
+            <div className="hero-transcript__head">
               <span>
-                <small>{active.system}</small>
-                <strong>{active.outcome}</strong>
-                <span>{active.detail}</span>
+                <MessageSquareText aria-hidden="true" size={16} /> {active.channel}
               </span>
-              <span className="hero-outcome__done">
-                <Check aria-hidden="true" size={13} /> Done
-              </span>
+              <small><Clock3 aria-hidden="true" size={12} /> 01:42</small>
+            </div>
+            <div className="hero-turn">
+              <span>Customer</span>
+              <p>{active.customer}</p>
+            </div>
+            <div className="hero-turn hero-turn--clara">
+              <span>Clara</span>
+              <p>{active.clara}</p>
             </div>
           </div>
-        </div>
 
-        <div className="hero-demo__footer">
-          <span>Completed with your rules</span>
-          <span>Every action leaves a visible record</span>
-          <span>Human handoff stays available</span>
+          <div className="hero-outcome" aria-live="polite">
+            <span className="hero-outcome__icon">
+              <OutcomeIcon aria-hidden="true" size={20} />
+            </span>
+            <span>
+              <small>{active.system}</small>
+              <strong>{active.outcome}</strong>
+              <span>{active.detail}</span>
+            </span>
+            <span className="hero-outcome__done">
+              <Check aria-hidden="true" size={13} /> Complete
+            </span>
+          </div>
+
+          <p className="hero-story__note">
+            <ShieldCheck aria-hidden="true" size={14} /> Approved rules checked · a visible record is saved
+          </p>
         </div>
       </Reveal>
     </section>
