@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -10,26 +10,24 @@ type RevealProps = {
 
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const reducedMotion =
       typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
-      setVisible(true);
       return;
     }
 
-    const node = ref.current;
-    if (!node) return;
-
-    setVisible(false);
+    node.dataset.visible = "false";
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true);
+          node.dataset.visible = "true";
           observer.disconnect();
         }
       },
@@ -44,7 +42,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
     <div
       className={className}
       data-reveal
-      data-visible={visible ? "true" : "false"}
+      data-visible="true"
       ref={ref}
       style={{ "--delay": `${delay}ms` } as CSSProperties}
     >

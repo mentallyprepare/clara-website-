@@ -8,7 +8,7 @@ describe("Clara homepage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /conversations to handle/i,
+        name: /conversations should move work forward/i,
       }),
     ).toBeVisible();
     const talkLinks = screen.getAllByRole("link", { name: "Talk to Clara" });
@@ -28,7 +28,9 @@ describe("Clara homepage", () => {
       name: /conversation-to-action workflow/i,
     });
     expect(within(actionPath).getAllByRole("listitem")).toHaveLength(4);
-    expect(screen.getByText("Can we move it to Friday?")).toBeVisible();
+    expect(
+      screen.getByText("Can we move my appointment to Friday morning?"),
+    ).toBeVisible();
     expect(screen.getByText(/available slots/i)).toBeVisible();
     expect(screen.getAllByText(/booking updated/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/passed to Priya with context/i)).toBeVisible();
