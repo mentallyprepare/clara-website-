@@ -8,7 +8,7 @@ describe("Clara homepage", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /^conversations should move work forward\.$/i,
+        name: /^you have conversations to handle\.$/i,
       }),
     ).toBeVisible();
     const talkLinks = screen.getAllByRole("link", { name: "Talk to Clara" });
@@ -17,9 +17,9 @@ describe("Clara homepage", () => {
       expect(link).toHaveAttribute("href", "#invitation"),
     );
     expect(
-      screen.getByRole("link", { name: "Hear a sample conversation" }),
+      screen.getByRole("link", { name: /see how clara works/i }),
     ).toHaveAttribute("href", "#after-hello");
-    expect(screen.getAllByText("Booking updated").length).toBeGreaterThan(0);
+    expect(screen.getByText("I’ll take care of them.")).toBeInTheDocument();
   });
 
   it("shows the full action path and human boundary", () => {

@@ -1,35 +1,27 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Hero } from "./Hero";
 
 describe("Clara hero", () => {
-  it("introduces Clara through a completed piece of work", () => {
+  it("introduces Clara through the city reveal", () => {
     render(<Hero />);
 
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /^conversations should move work forward\.$/i,
+        name: /^you have conversations to handle\.$/i,
       }),
     ).toBeVisible();
     expect(
-      screen.getByRole("group", { name: /choose a conversation/i }),
-    ).toBeVisible();
-    expect(screen.getByText("Booking updated")).toBeVisible();
-    expect(screen.getByText(/approved rules checked/i)).toBeVisible();
-  });
-
-  it("switches the visible conversation and outcome", () => {
-    render(<Hero />);
-
-    const leadScenario = screen.getByRole("button", {
-      name: /qualify a lead/i,
-    });
-    fireEvent.click(leadScenario);
-
-    expect(leadScenario).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByText(/we need support across three locations/i)).toBeVisible();
-    expect(screen.getByText("Lead qualified")).toBeVisible();
-    expect(screen.getByText("Ready for sales · Full context attached")).toBeVisible();
+      screen.getByText("I’ll take care of them."),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /see how clara works/i })).toHaveAttribute(
+      "href",
+      "#after-hello",
+    );
+    expect(screen.getByRole("link", { name: "Talk to Clara" })).toHaveAttribute(
+      "href",
+      "#invitation",
+    );
   });
 });
