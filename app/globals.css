@@ -1030,6 +1030,50 @@ button:focus-visible {
   border: 1px solid #ededfb;
   border-radius: clamp(1.5rem, 3vw, 2.5rem);
   box-shadow: 0 25px 80px rgba(27, 27, 60, 0.06);
+  padding-top: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.after-hello__chapter {
+  align-items: center;
+  border-bottom: 1px solid #e6e5ed;
+  color: #2e2d3b;
+  display: flex;
+  gap: .65rem;
+  margin-bottom: clamp(1.7rem, 3vw, 2.6rem);
+  min-height: 2.7rem;
+  padding-bottom: .9rem;
+}
+
+.after-hello__chapter > span {
+  align-items: center;
+  background: #1d1d26;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: .66rem;
+  font-variant-numeric: tabular-nums;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.after-hello__chapter strong {
+  font-size: .75rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.after-hello__chapter i {
+  background: #d6d4df;
+  height: 1px;
+  margin-left: .35rem;
+  width: 3rem;
+}
+
+.after-hello__chapter small {
+  color: #85828f;
+  font-size: .7rem;
+  margin-left: auto;
 }
 
 .outcome-story {
@@ -1268,7 +1312,7 @@ button:focus-visible {
   gap: 1rem;
   grid-template-columns: minmax(18rem, .92fr) minmax(22rem, 1.18fr) minmax(16rem, .72fr);
   grid-template-rows: minmax(22rem, auto) auto;
-  margin-top: 3.5rem;
+  margin-top: 2.75rem;
 }
 
 .workbench__brief,
@@ -1941,6 +1985,8 @@ button:focus-visible {
   }
 
   .story-section { padding: 5.5rem 1rem; }
+  .story-section.after-hello { padding-block: 1rem 4.25rem; }
+  .after-hello__chapter { margin-bottom: 1.65rem; }
   .after-hello, .everyday-work { border-radius: 1.5rem; }
   .outcome-story { gap: .75rem; grid-template-columns: 1fr; margin-top: 2.5rem; }
   .outcome-story__request,

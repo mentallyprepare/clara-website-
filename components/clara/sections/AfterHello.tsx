@@ -18,6 +18,12 @@ import { SectionHeading } from "../SectionHeading";
 export function AfterHello() {
   return (
     <section className="story-section after-hello" id="after-hello">
+      <div className="after-hello__chapter" aria-hidden="true">
+        <span>01</span>
+        <strong>Work begins here</strong>
+        <i />
+        <small>Intent → action</small>
+      </div>
       <Reveal>
         <SectionHeading
           eyebrow="From intent to outcome"
