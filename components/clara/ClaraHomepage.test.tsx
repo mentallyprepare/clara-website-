@@ -29,11 +29,11 @@ describe("Clara homepage", () => {
     });
     expect(within(actionPath).getAllByRole("listitem")).toHaveLength(4);
     expect(
-      screen.getByText("Can we move my appointment to Friday morning?"),
+      within(actionPath).getByText(/opening in Bristol, Leeds and Glasgow/i),
     ).toBeVisible();
-    expect(screen.getByText(/available slots/i)).toBeVisible();
-    expect(screen.getAllByText(/booking updated/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/passed to Priya with context/i)).toBeVisible();
+    expect(within(actionPath).getByText(/fit checked/i)).toBeVisible();
+    expect(within(actionPath).getByText("Sales-ready lead")).toBeVisible();
+    expect(within(actionPath).getByText(/pricing exceptions go to Rohan/i)).toBeVisible();
     expect(
       screen.getByRole("heading", { name: /prompt does not know/i }),
     ).toBeVisible();
