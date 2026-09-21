@@ -44,7 +44,7 @@ describe("Clara homepage", () => {
     expect(screen.getByLabelText("Flowstack")).toBeVisible();
     expect(
       screen.getByRole("heading", {
-        name: /small moments become completed work/i,
+        name: /some work should simply disappear/i,
       }),
     ).toBeVisible();
   });
