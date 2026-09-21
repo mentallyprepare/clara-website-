@@ -35,8 +35,13 @@ describe("Clara homepage", () => {
     expect(within(actionPath).getByText("Sales-ready lead")).toBeVisible();
     expect(within(actionPath).getByText(/pricing exceptions go to Rohan/i)).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: /prompt does not know/i }),
+      screen.getByRole("heading", { name: /works from your playbook/i }),
     ).toBeVisible();
+    expect(
+      screen.getByRole("list", { name: /teams working with claritel/i }),
+    ).toBeVisible();
+    expect(screen.getByRole("img", { name: "Panasonic" })).toBeVisible();
+    expect(screen.getByLabelText("Flowstack")).toBeVisible();
     expect(
       screen.getByRole("heading", {
         name: /small moments become completed work/i,
