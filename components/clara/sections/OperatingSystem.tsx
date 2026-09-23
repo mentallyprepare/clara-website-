@@ -1,13 +1,9 @@
 import {
-  ArrowDownRight,
-  BookOpenCheck,
-  Database,
   Globe2,
   MessagesSquare,
   Phone,
-  ShieldCheck,
-  UserRoundCheck,
 } from "lucide-react";
+import FeaturesBlock from "@/components/ui/features-2";
 import { Reveal } from "../Reveal";
 
 const clientLogos = [
@@ -38,33 +34,6 @@ const clientLogos = [
   },
 ] as const;
 
-const operatingLayers = [
-  {
-    icon: BookOpenCheck,
-    number: "01",
-    title: "Approved answer",
-    note: "Service knowledge, policy and the words your team would use.",
-  },
-  {
-    icon: Database,
-    number: "02",
-    title: "Customer context",
-    note: "CRM history, account state and the details already known.",
-  },
-  {
-    icon: ShieldCheck,
-    number: "03",
-    title: "Permission to act",
-    note: "The tools Clara may use—and the point where she must stop.",
-  },
-  {
-    icon: UserRoundCheck,
-    number: "04",
-    title: "A named fallback",
-    note: "The right person receives the conversation with its context intact.",
-  },
-] as const;
-
 function FlowstackLogo() {
   return (
     <span className="flowstack-logo" aria-label="Flowstack">
@@ -92,7 +61,6 @@ export function OperatingSystem() {
           <div className="client-logo-cloud" role="list" aria-label="Teams working with Claritel">
             {clientLogos.map((logo) => (
               <div className={`client-logo ${logo.className}`} role="listitem" key={logo.name}>
-                {/* Brand assets are supplied as lightweight official SVG/PNG wordmarks. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt={logo.name} decoding="async" loading="lazy" src={logo.src} />
               </div>
@@ -104,50 +72,18 @@ export function OperatingSystem() {
         </div>
       </Reveal>
 
-      <div className="operating-editorial">
-        <Reveal className="operating-editorial__copy">
-          <p className="eyebrow">How Clara fits</p>
-          <h2>Clara works from your playbook.</h2>
-          <p className="operating-editorial__summary">
-            Before Clara answers, she checks what your team has approved, what the
-            customer record says and what the next action is allowed to be.
-          </p>
-          <div className="operating-editorial__principle">
-            <ArrowDownRight aria-hidden="true" size={22} />
-            <p>No black box. Every answer has a source. Every action has a rule.</p>
-          </div>
-        </Reveal>
+      <Reveal delay={100}>
+        <FeaturesBlock />
+      </Reveal>
 
-        <Reveal className="operating-brief" delay={100}>
-          <header className="operating-brief__header">
-            <div>
-              <span>The operating brief</span>
-              <strong>What Clara can see and do</strong>
-            </div>
-            <span className="operating-brief__live"><i />Live rules</span>
-          </header>
-
-          <div className="operating-brief__rows" role="list" aria-label="Clara operating rules">
-            {operatingLayers.map(({ icon: Icon, number, title, note }) => (
-              <div className="operating-brief__row" role="listitem" key={number}>
-                <span className="operating-brief__number">{number}</span>
-                <span className="operating-brief__icon"><Icon aria-hidden="true" size={19} /></span>
-                <div>
-                  <strong>{title}</strong>
-                  <p>{note}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <footer className="operating-brief__channels" aria-label="Supported conversation channels">
-            <span><Phone aria-hidden="true" size={15} />Voice</span>
-            <span><Globe2 aria-hidden="true" size={15} />Website</span>
-            <span><MessagesSquare aria-hidden="true" size={15} />WhatsApp</span>
-            <small>One playbook, across every channel.</small>
-          </footer>
-        </Reveal>
-      </div>
+      <Reveal delay={150}>
+        <footer className="operating-channels" aria-label="Supported conversation channels">
+          <span><Phone aria-hidden="true" size={15} />Voice</span>
+          <span><Globe2 aria-hidden="true" size={15} />Website</span>
+          <span><MessagesSquare aria-hidden="true" size={15} />WhatsApp</span>
+          <small>One playbook, across every channel.</small>
+        </footer>
+      </Reveal>
     </section>
   );
 }
