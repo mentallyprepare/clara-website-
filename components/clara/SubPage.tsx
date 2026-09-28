@@ -34,7 +34,7 @@ export function SubPage({
     <>
       <SiteHeader />
       <main className="subpage">
-        <section className="subpage-hero relative overflow-hidden bg-[#fcfcfd] px-6 pb-16 pt-24 md:pt-28">
+        <section className="subpage-hero relative overflow-hidden bg-[#fcfcfd] px-6 pb-12 pt-10 md:pb-14 md:pt-14">
           {/* soft grid texture */}
           <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(45deg,#efeefb_0px_1px,transparent_1px_8px)] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_60%,transparent_110%)]" />
           {/* plum halo */}
@@ -71,8 +71,8 @@ export function SubPage({
           </div>
         </section>
 
-        <section className="subpage-grid bg-[#fcfcfd] px-6 pb-24">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="subpage-grid bg-[#fcfcfd] px-6 pb-14">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
               <Reveal key={f.title} delay={i * 70}>
                 <article className="group flex h-full flex-col rounded-2xl border border-[#e6e4f2] bg-white p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#c9c4ec] hover:shadow-[0_18px_40px_rgba(83,75,130,0.12)]">
@@ -91,7 +91,7 @@ export function SubPage({
           </div>
         </section>
 
-        <section className="subpage-cta px-6 pb-24">
+        <section className="subpage-cta px-6 pb-14">
           <Reveal>
             <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-[#1b1b3c] px-8 py-16 text-center md:py-20">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_-10%,rgba(180,180,236,0.35),transparent_60%)]" />

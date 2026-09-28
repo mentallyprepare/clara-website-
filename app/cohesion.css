@@ -1,0 +1,1171 @@
+/* ------------------------------------------------------------------
+   COHESION V3  — one continuous page, zero section breaks.
+   Loaded AFTER globals.css.
+------------------------------------------------------------------- */
+
+:root {
+  --page-bg: #f9f8fd;
+  --ink: #1b1b3c;
+  --plum: #534b82;
+  --plum-2: #7c72b8;
+  --lilac: #b4b4ec;
+  --lilac-soft: #eeeaff;
+  --hairline: rgba(83, 75, 130, 0.09);
+  --card-bg: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(83, 75, 130, 0.10);
+  --shadow-sm: 0 1px 3px rgba(27, 27, 60, 0.04), 0 4px 12px rgba(27, 27, 60, 0.04);
+  --shadow-md: 0 1px 2px rgba(27, 27, 60, 0.06), 0 12px 32px rgba(27, 27, 60, 0.08);
+  --shadow-lg: 0 1px 2px rgba(27, 27, 60, 0.06), 0 20px 50px rgba(83, 75, 130, 0.14);
+}
+
+/* ====== 1. PAGE CANVAS ====== */
+
+html, body {
+  background: var(--page-bg);
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle dot-grid on the page — premium, not AI-stripe */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: radial-gradient(circle, rgba(83, 75, 130, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Grain texture — very subtle noise */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.2 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+html { position: relative; }
+
+/* Ambient orbs — one warm, one cool, very soft */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  will-change: transform;
+}
+body::before {
+  top: -15rem;
+  left: -10rem;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle at 30% 30%, rgba(180, 180, 236, 0.45), transparent 65%);
+  animation: orb-a 28s ease-in-out infinite alternate;
+}
+body::after {
+  bottom: -16rem;
+  right: -12rem;
+  width: 46rem;
+  height: 46rem;
+  background: radial-gradient(circle at 60% 40%, rgba(124, 114, 184, 0.25), transparent 65%);
+  animation: orb-b 36s ease-in-out infinite alternate;
+}
+
+@keyframes orb-a {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(8rem, 5rem, 0) scale(1.06); }
+}
+@keyframes orb-b {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-6rem, -5rem, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after { animation: none; }
+}
+
+/* ------------------------------------------------------------------
+   EDITORIAL CORRECTION
+   Clara is an operating product, not an AI moodboard. These rules remove
+   the glass/orb/card vocabulary and establish a quieter, human page rhythm.
+------------------------------------------------------------------- */
+
+:root {
+  --page-bg: #f7f6fa;
+  --paper: #fbfafc;
+  --ink: #1b1b3c;
+  --plum: #534b82;
+  --muted: #666776;
+  --line: #dcdbe5;
+}
+
+html::before,
+html::after,
+body::before,
+body::after {
+  display: none !important;
+}
+
+body { background: var(--page-bg) !important; }
+
+.site-header {
+  background: rgba(247, 246, 250, 0.96) !important;
+  border-bottom: 1px solid var(--line) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.story-section {
+  max-width: 82rem;
+  padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem) !important;
+}
+
+.story-section + .story-section,
+#fit-finder,
+#behind-the-scenes {
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  display: grid;
+  gap: 1rem clamp(2rem, 7vw, 8rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr);
+  max-width: none;
+}
+
+.section-heading .eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+}
+
+.section-heading h2 {
+  font-size: clamp(2.5rem, 5.5vw, 5.3rem);
+  font-weight: 500;
+  line-height: .98;
+  max-width: 12ch;
+}
+
+.section-heading .section-summary {
+  align-self: end;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  margin: 0 0 .4rem !important;
+  max-width: 34rem;
+}
+
+/* Keep only product artifacts elevated. Everything else sits on the page. */
+.client-proof,
+.approach-step,
+.feature-card,
+.bts-card,
+.fit-card {
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.client-proof,
+.operating-playbook,
+.claralens,
+.fit-card {
+  border-color: var(--line) !important;
+}
+
+.client-proof::before,
+.transcript::before,
+.review-panel::before { display: none !important; }
+
+.client-proof:hover,
+.transcript:hover,
+.review-panel:hover,
+.fit-card:hover,
+.workbench__plan:hover,
+.workbench__receipt:hover,
+.workbench__boundary:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* 01 — one operational scene, with colour used as meaning rather than effect. */
+.after-hello__chapter { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+.workbench { gap: 1px !important; background: var(--line); border: 1px solid var(--line); border-radius: 1.25rem; overflow: hidden; }
+.workbench__brief,
+.workbench__plan,
+.workbench__receipt,
+.workbench__boundary {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.workbench__brief {
+  background: #20203d !important;
+}
+.workbench__brief::before { display: none !important; }
+.workbench__plan { background: #fff !important; }
+.workbench__receipt { background: #edf5ef !important; }
+.workbench__boundary { background: #eeedf5 !important; }
+.workbench__signals span,
+.workbench__tasks > div > span,
+.workbench__receipt-icon,
+.workbench__boundary > span { box-shadow: none !important; }
+
+/* 02 — proof first, then a single live conversation artifact. */
+.operating-system { padding-top: clamp(3rem, 5vw, 5rem) !important; }
+.client-proof { background: transparent !important; border-radius: 0 !important; }
+.client-logo { border-color: var(--line); }
+.operating-playbook {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(16rem, .72fr) minmax(24rem, 1.28fr);
+  padding: clamp(3rem, 6vw, 6rem) 0 0;
+}
+.operating-playbook__lede { margin: 0; }
+.operating-playbook__lede h2 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-weight: 500;
+  line-height: .98;
+  max-width: 9ch;
+}
+.chat-mock {
+  border-color: #cbc9d8;
+  border-radius: .9rem;
+  box-shadow: 12px 14px 0 #dedcea;
+  margin: 0;
+  max-width: none;
+}
+.chat-mock__logo { background: #534b82; box-shadow: none; }
+.chat-mock__msg--clara { background: #534b82; box-shadow: none; }
+.operating-channels { border-top: 1px solid var(--line); padding-top: 1rem; }
+
+/* 03 — a numbered implementation route, not another collection of cards. */
+.approach-path {
+  border-block: 1px solid var(--line);
+  gap: 0;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.approach-step {
+  background: transparent !important;
+  border: 0 !important;
+  border-left: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  display: grid;
+  gap: 1.6rem;
+  min-height: 11rem;
+  padding: 1rem;
+}
+.approach-step:first-child { border-left: 0 !important; }
+.approach-step small { color: #8d8b9b; font-size: .7rem; letter-spacing: .12em; }
+.approach-step > span {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  height: auto;
+  justify-content: flex-start;
+  width: auto;
+}
+.approach-step strong { align-self: end; font-size: .9rem; }
+.approach-step > svg { display: none; }
+.approach-note {
+  align-items: baseline;
+  display: grid;
+  gap: 1rem 3rem;
+  grid-template-columns: minmax(10rem, .35fr) minmax(0, 1fr);
+  margin-top: 1.5rem;
+}
+.approach-note span { color: var(--plum); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.approach-note p { font-size: clamp(1.1rem, 2vw, 1.45rem); line-height: 1.4; margin: 0; max-width: 38rem; }
+
+/* 04 — a morning ledger, using the rhythm of a work log rather than tiles. */
+.everyday-work { color: var(--ink); }
+.everyday-intro {
+  align-items: end;
+  display: grid;
+  gap: 1.5rem clamp(2rem, 7vw, 8rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr);
+}
+.everyday-intro .eyebrow { grid-column: 1 / -1; margin: 0; }
+.everyday-intro h2 { max-width: 11ch; }
+.everyday-intro h2 em { color: var(--plum); font-style: normal; }
+.everyday-intro > .reveal:last-child p { color: var(--muted); font-size: 1.05rem; line-height: 1.65; margin: 0; max-width: 32rem; }
+.morning-ledger {
+  border-block: 1px solid var(--line);
+  display: grid;
+  gap: 0;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .55fr);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+.morning-ledger__moments { border-right: 1px solid var(--line); }
+.morning-row {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 2.75rem minmax(12rem, .7fr) minmax(16rem, 1.3fr);
+  min-height: 9rem;
+  padding: 1.25rem 1.5rem 1.25rem 0;
+}
+.morning-row:last-child { border-bottom: 0; }
+.morning-row__icon { align-items: center; border: 1px solid var(--line); display: flex; height: 2.5rem; justify-content: center; width: 2.5rem; }
+.morning-row div p { color: var(--plum); font-size: .68rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 .45rem; text-transform: uppercase; }
+.morning-row h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -.02em; margin: 0; }
+.morning-row > p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin: 0; }
+.morning-receipt { background: #20203d; color: #fff; display: flex; flex-direction: column; padding: 1.6rem; }
+.morning-receipt__head { align-items: center; color: #c8c5df; display: flex; font-size: .7rem; font-weight: 700; gap: .5rem; letter-spacing: .1em; text-transform: uppercase; }
+.morning-receipt > strong { font-size: clamp(4rem, 8vw, 7rem); font-weight: 500; letter-spacing: -.08em; line-height: .85; margin-top: 3rem; }
+.morning-receipt > p { color: #d8d6e4; line-height: 1.45; margin: .8rem 0 2rem; max-width: 14rem; }
+.morning-receipt dl { border-top: 1px solid rgba(255,255,255,.18); margin: 0; }
+.morning-receipt dl div { display: flex; font-size: .78rem; justify-content: space-between; padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.morning-receipt dt { color: #aaa7bd; }
+.morning-receipt dd { margin: 0; }
+.morning-receipt small { color: #b9b6c8; line-height: 1.5; margin-top: auto; padding-top: 2rem; }
+
+/* 05 — interactive, but deliberately plain and useful. */
+#fit-finder { padding-block: clamp(4rem, 7vw, 7rem) !important; }
+#fit-finder > div { max-width: 70rem; text-align: left; }
+#fit-finder h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; max-width: 13ch; }
+#fit-finder h2 span { color: inherit; font-family: inherit; font-style: normal; }
+#fit-finder > div > .reveal > p { margin-left: 0; }
+.lens-card { display: none; }
+.fit-card { background: #fff !important; border-radius: .75rem !important; margin-left: 0 !important; max-width: 54rem !important; }
+.fit-card button { border-radius: .25rem !important; box-shadow: none !important; transform: none !important; }
+
+/* 06 — a proper change log. */
+.bts-layout {
+  display: grid;
+  gap: clamp(3rem, 7vw, 8rem);
+  grid-template-columns: minmax(18rem, .7fr) minmax(26rem, 1.3fr);
+}
+.bts-layout > .reveal:first-child { padding-top: .4rem; }
+.bts-layout .eyebrow { margin: 0 0 1.5rem; }
+.bts-layout h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; line-height: .98; margin: 0; max-width: 11ch; }
+.bts-layout > .reveal:first-child > p:not(.eyebrow) { color: var(--muted); line-height: 1.65; max-width: 30rem; }
+.bts-layout blockquote { border-left: 2px solid var(--plum); color: var(--plum); font-size: 1.1rem; line-height: 1.5; margin: 2rem 0 0; padding-left: 1rem; }
+.change-log { border: 1px solid var(--line); background: #fff; }
+.change-log header { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 1rem 1.25rem; }
+.change-log header span { color: #7b7988; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+.change-log header strong { color: #326248; font-size: .75rem; }
+.change-log ul { list-style: none; margin: 0; padding: 0; }
+.change-log li { align-items: center; border-bottom: 1px solid var(--line); display: grid; gap: 1rem; grid-template-columns: 2rem 8rem minmax(0, 1fr); padding: 1.1rem 1.25rem; }
+.change-log li > span { color: var(--plum); }
+.change-log li strong { font-size: .9rem; }
+.change-log li p { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 0; }
+.change-log footer { color: var(--plum); font-size: .75rem; padding: 1rem 1.25rem; }
+
+/* 07 — one evidence workspace; retain the product UI but remove glass. */
+.claralens { background: #efedf5 !important; border-radius: 0 !important; box-shadow: none !important; }
+.transcript,
+.review-panel { border-color: #cfccd9 !important; border-radius: .75rem; box-shadow: none !important; }
+
+/* 08 — one connected audit rail, not four interchangeable cards. */
+.improvement-loop-section { background: #17172c; color: #fff; padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem); }
+.improvement-loop-inner { margin: 0 auto; max-width: 82rem; }
+.improvement-loop-heading { display: grid; gap: 1rem clamp(2rem, 7vw, 8rem); grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr); }
+.improvement-loop-heading .eyebrow { color: #b4b4ec; grid-column: 1 / -1; margin: 0; }
+.improvement-loop-heading h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; line-height: .98; margin: 0; max-width: 10ch; }
+.improvement-loop-heading > p:last-child { align-self: end; color: #b9b8c8; font-size: 1.05rem; line-height: 1.6; margin: 0; max-width: 28rem; }
+.improvement-rail { border-block: 1px solid rgba(255,255,255,.2); display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0; }
+.improvement-rail__item { border-left: 1px solid rgba(255,255,255,.15); }
+.improvement-rail__item:first-child { border-left: 0; }
+.improvement-rail li { min-height: 21rem; padding: 1.25rem; position: relative; }
+.improvement-rail li > div { align-items: center; display: flex; justify-content: space-between; }
+.improvement-rail__icon { color: #c7c3f0; }
+.improvement-rail__number { color: #77758a; font-size: .7rem; letter-spacing: .1em; }
+.improvement-rail h3 { font-size: 1.45rem; font-weight: 500; margin: 3.5rem 0 .5rem; }
+.improvement-rail__who { color: #b4b4ec !important; font-size: .68rem !important; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.improvement-rail li > p:last-of-type { color: #b9b8c8; font-size: .86rem; line-height: 1.6; }
+.improvement-rail li > svg { bottom: 1.25rem; color: #77758a; position: absolute; right: 1.25rem; }
+
+.invitation { background: #17172c !important; border-top: 1px solid rgba(255,255,255,.14) !important; }
+.invitation::before,
+.invitation::after { display: none !important; }
+.invitation h2 { font-size: clamp(2.7rem, 6vw, 5.5rem); }
+
+@media (max-width: 900px) {
+  .section-heading,
+  .everyday-intro,
+  .operating-playbook,
+  .bts-layout,
+  .improvement-loop-heading { grid-template-columns: 1fr; }
+
+  .section-heading .section-summary { margin-top: .5rem !important; }
+  .approach-path { grid-template-columns: repeat(3, 1fr); }
+  .approach-step:nth-child(4) { border-left: 0 !important; }
+  .morning-ledger { grid-template-columns: 1fr; }
+  .morning-ledger__moments { border-bottom: 1px solid var(--line); border-right: 0; }
+  .morning-receipt { min-height: 25rem; }
+  .improvement-rail { grid-template-columns: repeat(2, 1fr); }
+  .improvement-rail__item:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .improvement-rail__item:nth-child(4) { border-top: 1px solid rgba(255,255,255,.15); }
+}
+
+@media (max-width: 640px) {
+  .story-section { padding: 4rem 1rem !important; }
+  .section-heading h2,
+  .everyday-intro h2,
+  .bts-layout h2,
+  #fit-finder h2,
+  .improvement-loop-heading h2 { font-size: clamp(2.35rem, 12vw, 3.8rem); }
+  .client-proof { grid-template-columns: 1fr; }
+  .client-proof__intro { border-bottom: 1px solid var(--line); border-right: 0; }
+  .client-logo-cloud { grid-template-columns: repeat(3, 1fr); }
+  .client-logo { min-height: 5.5rem; }
+  .approach-path { grid-template-columns: repeat(2, 1fr); }
+  .approach-step:nth-child(odd) { border-left: 0 !important; }
+  .approach-step:nth-child(4) { border-left: 1px solid var(--line) !important; }
+  .approach-note { grid-template-columns: 1fr; }
+  .morning-row { align-items: start; grid-template-columns: 2.5rem 1fr; padding-right: 0; }
+  .morning-row > p { grid-column: 2; }
+  .change-log li { align-items: start; grid-template-columns: 1.5rem 1fr; }
+  .change-log li p { grid-column: 2; }
+  .improvement-loop-section { padding-inline: 1rem; }
+  .improvement-rail { grid-template-columns: 1fr; }
+  .improvement-rail__item { border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .improvement-rail__item:first-child { border-top: 0; }
+  .improvement-rail li { min-height: 17rem; }
+}
+
+/* Lift content above ambient layers */
+main, header, footer { position: relative; z-index: 1; }
+
+
+/* ====== 2. HEADER — compact, refined ====== */
+
+.site-header {
+  height: 3.25rem !important;
+  padding: 0 clamp(1rem, 3vw, 3rem) !important;
+  background: rgba(249, 248, 253, 0.82) !important;
+  border-bottom: 1px solid rgba(83, 75, 130, 0.06) !important;
+  backdrop-filter: blur(24px) saturate(1.5) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+  z-index: 50 !important;
+}
+
+.site-brand {
+  gap: 0.5rem !important;
+  min-height: 2rem !important;
+}
+
+.site-brand__logo {
+  height: 1.75rem !important;
+  width: 1.75rem !important;
+}
+
+.site-brand strong {
+  font-size: 0.85rem !important;
+}
+
+.site-brand small {
+  font-size: 0.58rem !important;
+  margin-top: 0.15rem !important;
+}
+
+/* Nav tabs smaller */
+.site-nav__desktop {
+  gap: 0.5rem !important;
+}
+
+.nav-cta {
+  font-size: 0.75rem !important;
+  padding: 0.4rem 1rem !important;
+  border-radius: 99px !important;
+}
+
+/* SlideTabs pill bar — more compact */
+.slide-tabs {
+  font-size: 0.72rem !important;
+  padding: 0.2rem !important;
+  gap: 0 !important;
+  border-radius: 99px !important;
+  height: auto !important;
+}
+.slide-tabs button {
+  padding: 0.3rem 0.7rem !important;
+  font-size: 0.72rem !important;
+  border-radius: 99px !important;
+}
+
+
+/* ====== 3. ALL LIGHT SECTIONS — same canvas, zero breaks ====== */
+
+.story-section {
+  padding: clamp(2.5rem, 4.5vw, 4rem) clamp(1.25rem, 4vw, 4rem) !important;
+  max-width: 90rem;
+  background: transparent !important;
+}
+
+.after-hello,
+.operating-system {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin-top: 0 !important;
+}
+
+.approach {
+  padding-block: clamp(2rem, 4vw, 3.5rem) !important;
+}
+
+#everyday-work,
+#fit-finder,
+#behind-the-scenes {
+  background: transparent !important;
+}
+
+/* Remove any remaining section margin/gap */
+.story-section + .story-section,
+#behind-the-scenes,
+#everyday-work,
+#fit-finder {
+  margin-top: 0 !important;
+}
+
+/* ====== 4. CARD SYSTEM — glass + depth ====== */
+
+/* Neutral cards → light glass. NOTE: workbench cards are intentionally
+   color-coded (dark brief / green receipt / lavender boundary) — do NOT
+   force a background on them, only depth. */
+.client-proof,
+.transcript,
+.review-panel,
+.approach-step,
+.feature-card,
+.fit-card,
+.bts-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1),
+              box-shadow 280ms cubic-bezier(.2,.7,.2,1);
+}
+
+/* Workbench: keep each card's own color, add refined depth only */
+.workbench__brief,
+.workbench__plan,
+.workbench__receipt,
+.workbench__boundary {
+  box-shadow: var(--shadow-md) !important;
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1),
+              box-shadow 280ms cubic-bezier(.2,.7,.2,1);
+}
+
+/* Hoverable cards lift */
+.feature-card:hover,
+.client-proof:hover,
+.transcript:hover,
+.review-panel:hover,
+.fit-card:hover,
+.bts-card:hover,
+.workbench__plan:hover,
+.workbench__receipt:hover,
+.workbench__boundary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Gradient shimmer border on key cards */
+.client-proof,
+.transcript,
+.review-panel {
+  position: relative;
+  isolation: isolate;
+}
+.client-proof::before,
+.transcript::before,
+.review-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(180,180,236,0.3) 40%, rgba(83,75,130,0.12));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* ====== 5. CLARALENS ====== */
+
+.claralens {
+  background: rgba(255,255,255,0.55) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: clamp(1.25rem, 2.4vw, 2rem) !important;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem) !important;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+}
+
+
+/* ====== 6. DARK REGION — improvement-loop + invitation + footer ====== */
+
+#improvement-loop {
+  position: relative;
+  padding-top: clamp(5rem, 8vw, 7rem) !important;
+  padding-bottom: clamp(3rem, 5vw, 4.5rem) !important;
+  /* warm plum→indigo→navy descent so the seam reads as dusk, not gray mud */
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(124,114,184,0.22) 3.5%,
+    #2a2551 9%,
+    #14122c 18%,
+    #0f0f1a 100%) !important;
+  margin-top: 0 !important;
+}
+
+.invitation {
+  background: linear-gradient(180deg, #0f0f1a 0%, #151530 60%, #1b1b3c 100%) !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(4rem, 7vw, 6rem) !important;
+}
+
+/* Aurora behind invitation */
+.invitation::before {
+  border: none !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 50% 50%, rgba(180,180,236,0.18), transparent 70%) !important;
+  height: 36rem !important;
+  width: 56rem !important;
+  left: 50% !important;
+  top: -16rem !important;
+  transform: translateX(-50%) !important;
+  filter: blur(24px);
+}
+.invitation::after {
+  border: none !important;
+  background: radial-gradient(circle at 50% 50%, rgba(124,114,184,0.14), transparent 70%) !important;
+  height: 36rem !important;
+  width: 56rem !important;
+  right: 50% !important;
+  bottom: -18rem !important;
+  transform: translateX(50%) !important;
+  filter: blur(24px);
+}
+
+/* Dark cards — glass on dark */
+#improvement-loop article {
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 16px 36px rgba(0,0,0,0.3);
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1),
+              box-shadow 280ms cubic-bezier(.2,.7,.2,1),
+              border-color 280ms ease;
+}
+#improvement-loop article:hover {
+  transform: translateY(-3px);
+  border-color: rgba(198,195,240,0.35) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.10) inset,
+    0 24px 56px rgba(83, 75, 130, 0.35);
+}
+
+/* Footer on dark canvas */
+.site-footer {
+  background: #1b1b3c;
+  color: #8f8fb5;
+  padding: 2rem clamp(1.25rem, 4vw, 4rem) 2.5rem !important;
+  max-width: none !important;
+  border-top: 1px solid rgba(180,180,236,0.06);
+}
+.site-footer a { color: #c9c9df !important; }
+
+
+/* ====== 7. TYPOGRAPHY TIGHTENING ====== */
+
+.story-section h2,
+.story-section .h2 {
+  letter-spacing: -0.04em;
+}
+
+.story-section .eyebrow,
+.story-section h2 + p {
+  margin-top: 0.5rem;
+}
+
+
+/* ====== 8. SPACING — kill all excess ====== */
+
+.story-section > .reveal + .reveal,
+.story-section > * + * {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.outcome-story {
+  grid-template-rows: minmax(16rem, auto) auto !important;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+
+.lens-scene { margin-top: clamp(1.25rem, 2.5vw, 2rem) !important; }
+
+/* Chapter markers — quieter */
+.after-hello__chapter {
+  border-bottom-color: rgba(83, 75, 130, 0.08) !important;
+}
+.after-hello__chapter > span {
+  background: linear-gradient(140deg, #1b1b3c, #423d6b) !important;
+  box-shadow: 0 3px 8px rgba(27, 27, 60, 0.15);
+}
+
+/* Approach step icons */
+.approach-step > span {
+  background: linear-gradient(140deg, #ffffff, #eeeaff) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ====== 9. BUTTONS — refined depth ====== */
+
+.button-primary,
+.hero__cta-primary,
+a[class*="button"]:not([class*="light"]):not([class*="outline"]) {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.12) inset,
+    0 4px 10px rgba(27, 27, 60, 0.12);
+  transition: transform 200ms cubic-bezier(.2,.7,.2,1),
+              box-shadow 200ms cubic-bezier(.2,.7,.2,1);
+}
+.button-primary:hover,
+.hero__cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.15) inset,
+    0 8px 20px rgba(83, 75, 130, 0.22);
+}
+
+
+/* ====== 10. REVEAL ANIMATION ====== */
+
+[data-reveal] {
+  transition-timing-function: cubic-bezier(.2, .7, .2, 1) !important;
+  transition-duration: 600ms !important;
+}
+
+
+/* ====== 11. OPERATING SYSTEM CAROUSEL — tighten ====== */
+
+.operating-playbook {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+
+.operating-channels {
+  margin-top: clamp(1rem, 2vw, 1.5rem) !important;
+}
+
+
+/* ====== 12. WORKBENCH (After Hello) — designer polish ====== */
+
+.workbench {
+  gap: clamp(0.85rem, 1.6vw, 1.35rem) !important;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
+
+/* The customer message — hero dark card with gradient depth + glow */
+.workbench__brief {
+  background:
+    radial-gradient(120% 90% at 15% 0%, rgba(124,114,184,0.35), transparent 55%),
+    linear-gradient(160deg, #26254b 0%, #1a1936 55%, #141329 100%) !important;
+  border: 1px solid rgba(180,180,236,0.14) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 30px 70px rgba(20, 19, 45, 0.45),
+    0 8px 24px rgba(20, 19, 45, 0.25) !important;
+}
+
+/* Richer dot texture on the dark card */
+.workbench__brief::before {
+  background: radial-gradient(circle, rgba(180,180,236,0.35) 0 1.3px, transparent 1.3px) !important;
+  background-size: 20px 20px !important;
+  opacity: 0.4 !important;
+}
+
+/* Speaker name in soft lilac for hierarchy */
+.workbench__speaker {
+  color: #c2bee6 !important;
+  font-weight: 600 !important;
+}
+
+/* Signal chips — glassy pills on the dark card */
+.workbench__signals span {
+  background: rgba(255,255,255,0.07) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  border-radius: 999px !important;
+  padding: 0.4rem 0.75rem !important;
+  backdrop-filter: blur(6px);
+}
+
+/* Plan card — cleaner surface + crisp hairline */
+.workbench__plan {
+  background: linear-gradient(180deg, #ffffff, #faf9ff) !important;
+  border: 1px solid rgba(83,75,130,0.10) !important;
+}
+
+/* Plan task icons — soft gradient tiles */
+.workbench__tasks > div > span {
+  background: linear-gradient(150deg, #f1eefc, #e5e1f7) !important;
+  box-shadow: 0 2px 6px rgba(83,75,130,0.10) !important;
+}
+
+/* Receipt (success) — keep green, add life */
+.workbench__receipt {
+  background: linear-gradient(160deg, #f0f9f2, #e4f4e9) !important;
+  border: 1px solid rgba(75,140,100,0.20) !important;
+}
+.workbench__receipt-icon {
+  background: linear-gradient(150deg, #d8efdf, #c6e8d1) !important;
+  box-shadow: 0 3px 8px rgba(39,118,78,0.15) !important;
+}
+
+/* Boundary — lavender with subtle depth */
+.workbench__boundary {
+  background: linear-gradient(160deg, #f4f2fc, #ece8f8) !important;
+  border: 1px solid rgba(83,75,130,0.12) !important;
+}
+.workbench__boundary > span {
+  box-shadow: 0 3px 8px rgba(83,75,130,0.12) !important;
+}
+
+
+/* ====== 13. CHAT MOCKUP (Operating System) ====== */
+
+.chat-mock {
+  max-width: 30rem;
+  margin: clamp(1.25rem, 2.5vw, 2rem) auto 0;
+  background: #ffffff;
+  border: 1px solid rgba(83,75,130,0.12);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1px 2px rgba(27,27,60,0.05),
+    0 24px 60px rgba(27,27,60,0.12);
+  overflow: hidden;
+}
+
+/* header bar */
+.chat-mock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, #fbfaff, #f4f2fc);
+  border-bottom: 1px solid rgba(83,75,130,0.08);
+}
+.chat-mock__id { display: flex; align-items: center; gap: 0.6rem; }
+.chat-mock__logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.65rem;
+  flex: 0 0 auto;
+  background:
+    radial-gradient(120% 120% at 30% 20%, #b4b4ec, transparent 60%),
+    linear-gradient(150deg, #534b82, #1b1b3c);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.chat-mock__id > span { display: grid; line-height: 1.1; }
+.chat-mock__id strong { font-size: 0.9rem; color: var(--ink); letter-spacing: -0.01em; }
+.chat-mock__id small {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  color: #7a7590;
+  margin-top: 0.15rem;
+}
+.chat-mock__live {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #3fbf72;
+  box-shadow: 0 0 0 3px rgba(63,191,114,0.18);
+}
+.chat-mock__channels {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9a95b0;
+}
+
+/* thread */
+.chat-mock__thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(238,234,255,0.5), transparent 60%),
+    #fcfbff;
+}
+
+.chat-mock__row { display: flex; flex-direction: column; }
+
+/* twist marker — centered chip */
+.chat-mock__mark {
+  align-self: center;
+  margin: 0.55rem 0 0.35rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--plum);
+  background: #efeaff;
+  border: 1px solid rgba(83,75,130,0.12);
+  border-radius: 999px;
+}
+
+/* bubbles */
+.chat-mock__msg {
+  max-width: 80%;
+  padding: 0.55rem 0.8rem;
+  border-radius: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.chat-mock__msg p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.chat-mock__foot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.66rem;
+}
+
+/* customer — left, light */
+.chat-mock__msg--customer {
+  align-self: flex-start;
+  background: #f0eef7;
+  border: 1px solid rgba(83,75,130,0.07);
+  border-bottom-left-radius: 0.35rem;
+  color: var(--ink);
+}
+.chat-mock__msg--customer .chat-mock__foot { color: #9a95b0; }
+
+/* clara — right, plum gradient */
+.chat-mock__msg--clara {
+  align-self: flex-end;
+  background: linear-gradient(160deg, #5b5391, #35315c);
+  border-bottom-right-radius: 0.35rem;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(53,49,92,0.22);
+}
+.chat-mock__msg--clara .chat-mock__foot { color: #cfc9ee; }
+.chat-mock__msg--clara .chat-mock__foot svg { color: #8fe3ac; }
+
+/* resolution strip */
+.chat-mock__resolve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #2f6b49;
+  text-align: center;
+  background: linear-gradient(180deg, #edf7f0, #e2f2e8);
+  border-top: 1px solid rgba(75,140,100,0.18);
+}
+
+@media (max-width: 640px) {
+  .chat-mock { max-width: 100%; }
+  .chat-mock__msg { max-width: 88%; }
+}
+
+
+/* ====== 14. CONVERSATION LENS (Fit Finder banner) ====== */
+
+@property --lx {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+@property --ly {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+
+.lens-card {
+  --lx: 50%;
+  --ly: 50%;
+  position: relative;
+  max-width: 48rem;
+  margin: clamp(1.75rem, 3vw, 2.5rem) auto 0;
+  background: #ffffff;
+  border: 1px solid rgba(83,75,130,0.12);
+  border-radius: 1.5rem;
+  padding: 0.75rem;
+  box-shadow:
+    0 1px 2px rgba(27,27,60,0.05),
+    0 20px 50px rgba(27,27,60,0.10);
+  animation: lens-drift 9s ease-in-out infinite alternate;
+}
+.lens-card[data-hover="true"] { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .lens-card { animation: none; }
+}
+
+@keyframes lens-drift {
+  0%   { --lx: 26%; --ly: 40%; }
+  50%  { --lx: 72%; --ly: 58%; }
+  100% { --lx: 42%; --ly: 46%; }
+}
+
+.lens-stage {
+  position: relative;
+  height: clamp(11rem, 24vw, 14rem);
+  overflow: hidden;
+  border-radius: 1rem;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(238,234,255,0.55), transparent 62%),
+    #faf9ff;
+  cursor: crosshair;
+}
+
+/* rows of pills, vertically centered */
+.lens-rows {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.lens-row {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  will-change: transform;
+}
+.lens-row[data-dir="l"] { animation: lens-scroll-l 32s linear infinite; }
+.lens-row[data-dir="r"] { animation: lens-scroll-r 32s linear infinite; }
+
+@keyframes lens-scroll-l {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+@keyframes lens-scroll-r {
+  from { transform: translateX(-33.333%); }
+  to   { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lens-row { animation: none !important; }
+}
+
+/* pill base */
+.lens-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #6f6a86;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(83,75,130,0.10);
+  backdrop-filter: blur(4px);
+}
+.lens-pill svg { color: #9a95b0; flex: 0 0 auto; }
+
+/* base layer: punch a hole under the lens */
+.lens-rows--base {
+  -webkit-mask-image: radial-gradient(circle 2.6rem at var(--lx) var(--ly), transparent 96%, #000 100%);
+          mask-image: radial-gradient(circle 2.6rem at var(--lx) var(--ly), transparent 96%, #000 100%);
+}
+
+/* reveal layer: only visible through the lens circle, highlighted */
+.lens-rows--reveal {
+  clip-path: circle(2.6rem at var(--lx) var(--ly));
+  z-index: 2;
+}
+.lens-rows--reveal .lens-pill {
+  color: var(--plum);
+  font-weight: 600;
+  background: #ffffff;
+  border-color: rgba(83,75,130,0.28);
+  box-shadow: 0 6px 16px rgba(83,75,130,0.18);
+  transform: scale(1.06);
+}
+.lens-rows--reveal .lens-pill svg { color: var(--plum); }
+
+/* the magnifier glass */
+.lens-glass {
+  position: absolute;
+  left: var(--lx);
+  top: var(--ly);
+  transform: translate(-50%, -50%);
+  width: 5.6rem;
+  height: 5.6rem;
+  z-index: 3;
+  pointer-events: none;
+}
+.lens-glass__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(83,75,130,0.85);
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35), rgba(180,180,236,0.08) 45%, transparent 70%);
+  box-shadow:
+    0 10px 24px rgba(27,27,60,0.20),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+.lens-glass__handle {
+  position: absolute;
+  right: -0.55rem;
+  bottom: -0.55rem;
+  width: 1.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #534b82, #35315c);
+  transform: rotate(45deg);
+  transform-origin: left center;
+  box-shadow: 0 3px 6px rgba(27,27,60,0.25);
+}
+
+/* edge fades */
+.lens-fade {
+  position: absolute;
+  inset-block: 0;
+  width: 18%;
+  z-index: 4;
+  pointer-events: none;
+}
+.lens-fade--l { left: 0; background: linear-gradient(90deg, #faf9ff, transparent); }
+.lens-fade--r { right: 0; background: linear-gradient(270deg, #faf9ff, transparent); }
+
+.lens-caption {
+  margin: 0.85rem 0 0.35rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #61676b;
+}

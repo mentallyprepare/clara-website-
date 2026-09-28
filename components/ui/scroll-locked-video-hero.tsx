@@ -66,7 +66,7 @@ export default function MetroHero({
 
     const updateTarget = () => {
       if (prefersReducedMotion) return;
-      const headerOffset = 80;
+      const headerOffset = 52;
       const sectionTop = window.scrollY + section.getBoundingClientRect().top - headerOffset;
       targetProgress = clamp((window.scrollY - sectionTop) / scrubDistance, 0, 1);
     };
@@ -148,8 +148,8 @@ export default function MetroHero({
       ref={sectionRef}
       style={{
         height: reduceMotion
-          ? "calc(100dvh - 5rem)"
-          : `calc(100dvh - 5rem + ${scrubDistance}px)`,
+          ? "calc(100dvh - 3.25rem)"
+          : `calc(100dvh - 3.25rem + ${scrubDistance}px)`,
         minHeight: "36rem",
         position: "relative",
         ...style,

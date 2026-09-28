@@ -28,7 +28,7 @@ export function AfterHello() {
         <SectionHeading
           eyebrow="From intent to outcome"
           heading="The hard part starts after hello."
-          summary="An answer is useful when the next step happens. Clara keeps the conversation connected to the work behind it—and knows when a person should take over."
+          summary="A conversation matters when the next step actually happens. Clara checks the rules, updates the system, and brings in a person when judgment is needed."
         />
       </Reveal>
 

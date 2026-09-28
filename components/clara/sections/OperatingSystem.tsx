@@ -1,79 +1,32 @@
-import {
-  Globe2,
-  MessagesSquare,
-  Phone,
-} from "lucide-react";
-import FeaturesBlock from "@/components/ui/features-2";
+import { Globe2, MessagesSquare, Phone } from "lucide-react";
+import { ConversationFlow } from "../visuals/ConversationFlow";
 import { Reveal } from "../Reveal";
-
-const clientLogos = [
-  {
-    name: "Panasonic",
-    src: "https://viko.panasonic.com/Uploads/Cms/logo_siyah.png",
-    className: "client-logo--panasonic",
-  },
-  {
-    name: "Rupeek",
-    src: "https://assets.rupeek.com/website/images/atl-refresh/logo-new.svg",
-    className: "client-logo--rupeek",
-  },
-  {
-    name: "Zolve",
-    src: "https://www.zolveimages.zolve.com/website/images/zolve_logo.svg",
-    className: "client-logo--zolve",
-  },
-  {
-    name: "Quick Heal",
-    src: "https://www.quickheal.co.in/static/version1789060853/frontend/quickheal/in/en_US/images/logo.svg",
-    className: "client-logo--quickheal",
-  },
-  {
-    name: "Atlantic",
-    src: "https://atlanticcourier.net/static/imgs/atlantic-logo.svg",
-    className: "client-logo--atlantic",
-  },
-] as const;
-
-function FlowstackLogo() {
-  return (
-    <span className="flowstack-logo" aria-label="Flowstack">
-      <svg aria-hidden="true" fill="none" viewBox="0 0 34 22">
-        <path d="M0 11h6" />
-        <rect height="12.5" width="20.5" x="6.75" y="4.75" />
-        <rect className="flowstack-logo__fill" height="5" width="5" x="10.25" y="8.5" />
-        <rect height="5" width="5" x="18.75" y="8.5" />
-        <path d="M27.25 11H34M31.5 8.5 34 11l-2.5 2.5" />
-      </svg>
-      <strong>Flowstack</strong>
-    </span>
-  );
-}
+import { PixelLogoGrid } from "@/components/ui/pixel-logo-grid";
 
 export function OperatingSystem() {
   return (
     <section className="story-section operating-system" id="operating-system">
       <Reveal>
-        <div className="client-proof">
-          <div className="client-proof__intro">
-            <span>Already at work</span>
-            <p>Supporting customer operations across finance, technology and service.</p>
-          </div>
-          <div className="client-logo-cloud" role="list" aria-label="Teams working with Claritel">
-            {clientLogos.map((logo) => (
-              <div className={`client-logo ${logo.className}`} role="listitem" key={logo.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img alt={logo.name} decoding="async" loading="lazy" src={logo.src} />
-              </div>
-            ))}
-            <div className="client-logo client-logo--flowstack" role="listitem">
-              <FlowstackLogo />
-            </div>
-          </div>
-        </div>
+        <PixelLogoGrid />
       </Reveal>
 
       <Reveal delay={100}>
-        <FeaturesBlock />
+        <div className="operating-playbook">
+          <div className="operating-playbook__lede">
+            <p className="eyebrow">How Clara fits</p>
+            <h2>One playbook. Every channel.</h2>
+            <p>
+              Voice, website and WhatsApp follow the same rules. Clara keeps the
+              context together and hands off cleanly when a person should step in.
+            </p>
+            <ul className="operating-playbook__principles">
+              <li><strong>Same rules</strong><span>Your approved answers follow the customer.</span></li>
+              <li><strong>Same history</strong><span>No one has to ask the customer to start again.</span></li>
+              <li><strong>Clear handoff</strong><span>A person receives the conversation and the work already done.</span></li>
+            </ul>
+          </div>
+          <ConversationFlow />
+        </div>
       </Reveal>
 
       <Reveal delay={150}>
@@ -87,3 +40,4 @@ export function OperatingSystem() {
     </section>
   );
 }
+

@@ -35,37 +35,35 @@ describe("Clara homepage", () => {
     expect(within(actionPath).getByText("Sales-ready lead")).toBeVisible();
     expect(within(actionPath).getByText(/pricing exceptions go to Rohan/i)).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: /works from your playbook/i }),
-    ).toBeVisible();
-    expect(
       screen.getByRole("list", { name: /teams working with claritel/i }),
     ).toBeVisible();
     expect(screen.getByRole("img", { name: "Panasonic" })).toBeVisible();
     expect(screen.getByLabelText("Flowstack")).toBeVisible();
     expect(
-      screen.getByRole("heading", {
-        name: /some work should simply disappear/i,
-      }),
+      screen.getByRole("heading", { name: /one playbook\. every channel/i }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: /three conversations\. already handled/i }),
     ).toBeVisible();
   });
 
   it("connects implementation, evidence, and the final invitation", () => {
     render(<ClaraHomepage />);
     expect(
-      screen.getByRole("heading", { name: /number you need to move/i }),
+      screen.getByRole("heading", { name: /start with one number/i }),
     ).toBeVisible();
-    expect(screen.getByText("Listen")).toBeVisible();
-    expect(screen.getByText("Check")).toBeVisible();
-    expect(screen.getByText("Change")).toBeVisible();
-    expect(screen.getByText("Measure again")).toBeVisible();
+    expect(screen.getByRole("heading", { name: /^listen\.$/i })).toBeVisible();
+    expect(screen.getByRole("heading", { name: /^check\.$/i })).toBeVisible();
+    expect(screen.getByRole("heading", { name: /^change\.$/i })).toBeVisible();
+    expect(screen.getByRole("heading", { name: /^measure again\.$/i })).toBeVisible();
     expect(
       screen.getByRole("heading", {
-        name: /every score should be able to show its work/i,
+        name: /a score is only useful if you can check it/i,
       }),
     ).toBeVisible();
     expect(screen.getByText(/evidence found in transcript/i)).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: /conversation worth fixing/i }),
+      screen.getByRole("heading", { name: /one messy conversation/i }),
     ).toBeVisible();
     expect(
       screen.getByRole("link", { name: "Book a working session" }),

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./cohesion.css";
+import "./editorial.css";
 
 export const metadata: Metadata = {
   title: "Clara by Claritel",

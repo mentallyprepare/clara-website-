@@ -6,7 +6,7 @@ import { EvidenceLink } from "../visuals/EvidenceLink";
 export function ClaraLens() {
   return (
     <section className="story-section claralens" id="claralens">
-      <Reveal><SectionHeading eyebrow="ClaraLens" heading="Every score should be able to show its work." summary="ClaraLens connects a quality result to the exact conversation evidence behind it, so reviewers can verify, override and improve with context." /></Reveal>
+      <Reveal><SectionHeading eyebrow="ClaraLens" heading="A score is only useful if you can check it." summary="Open the exact moment behind a result, verify the evidence, and override it when the reviewer knows better." /></Reveal>
       <div className="lens-scene">
         <Reveal className="transcript" delay={80}>
           <div className="transcript__bar"><span><MessageSquareQuote aria-hidden="true" size={18} /> Conversation transcript</span><small>Example review</small></div>

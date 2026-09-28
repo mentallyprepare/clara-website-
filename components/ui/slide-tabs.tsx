@@ -45,7 +45,7 @@ export const SlideTabs = () => {
   return (
     <ul
       onMouseLeave={() => moveCursorTo(activeIndex)}
-      className="relative flex w-fit items-center rounded-full border border-[#1b1b3c] bg-white p-1"
+      className="relative flex w-fit items-center rounded-full border border-[#1b1b3c]/60 bg-white/80 p-0.5 backdrop-blur-sm"
     >
       {siteTabs.map((tab, i) => (
         <li
@@ -58,7 +58,7 @@ export const SlideTabs = () => {
         >
           <Link
             href={tab.href}
-            className="block cursor-pointer whitespace-nowrap px-3 py-1.5 text-xs font-medium uppercase tracking-wide text-[#1b1b3c] md:px-4 md:py-2 md:text-sm"
+            className="block cursor-pointer whitespace-nowrap px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide text-[#1b1b3c] md:px-3 md:py-1.5 md:text-xs"
           >
             {tab.label}
           </Link>
@@ -77,7 +77,7 @@ const Cursor = ({ position }: { position: CursorPosition }) => (
       width: position.width,
       opacity: position.opacity,
     }}
-    className="absolute z-0 h-7 rounded-full bg-[#e7e4fb] transition-all duration-300 ease-out md:h-9"
+    className="absolute z-0 h-6 rounded-full bg-[#e7e4fb] transition-all duration-300 ease-out md:h-7"
   />
 );
 
