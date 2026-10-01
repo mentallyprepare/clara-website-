@@ -37,10 +37,6 @@ export function AfterHello() {
       </Reveal>
 
       <div className="problem__panel" aria-label="A customer conversation and what it requires">
-        <Reveal className="problem__call" delay={40}>
-          <ChatMessages />
-        </Reveal>
-
         <Reveal className="problem__needs" delay={100}>
           <h3>What this conversation requires</h3>
           <ul>
@@ -56,6 +52,10 @@ export function AfterHello() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal className="problem__call" delay={40}>
+          <ChatMessages />
         </Reveal>
       </div>
     </section>
