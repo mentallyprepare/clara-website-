@@ -43,20 +43,35 @@ export function AfterHello() {
           </div>
 
           <ol className="problem__turns" aria-label="The customer conversation">
-            <li className="problem__turn problem__turn--lead">
+            <li className="problem__turn problem__turn--customer problem__turn--lead">
+              <small>Customer</small>
               <q>
                 I need to <em>reschedule my appointment.</em>
               </q>
             </li>
-            <li className="problem__turn">
+            <li className="problem__turn problem__turn--ai">
+              <small>Clara</small>
+              <q>Yes, sure.</q>
+            </li>
+            <li className="problem__turn problem__turn--customer">
+              <small>Customer</small>
               <q>
                 Actually, can you also tell me <em>if my insurance covers it?</em>
               </q>
             </li>
-            <li className="problem__turn">
+            <li className="problem__turn problem__turn--ai">
+              <small>Clara</small>
+              <q>Yes, sure.</q>
+            </li>
+            <li className="problem__turn problem__turn--customer">
+              <small>Customer</small>
               <q>
                 And can you <em>send the details on WhatsApp?</em>
               </q>
+            </li>
+            <li className="problem__turn problem__turn--ai">
+              <small>Clara</small>
+              <q>Yes, sure.</q>
             </li>
           </ol>
 

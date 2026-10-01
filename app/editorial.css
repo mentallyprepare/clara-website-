@@ -1193,29 +1193,56 @@ body { background: var(--page-bg) !important; }
 }
 
 .problem__turns {
-  display: grid;
-  gap: clamp(.9rem, 1.6vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
   list-style: none;
-  margin: clamp(1.25rem, 2.6vw, 2rem) 0;
+  margin: clamp(1rem, 2vw, 1.5rem) 0;
   padding: 0;
 }
 
-.problem__turn q {
+.problem__turn {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  max-width: 88%;
+}
+
+.problem__turn small {
   color: var(--problem-text-on-brand-muted);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.problem__turn q {
   display: block;
-  font-size: clamp(1.05rem, 1.45vw, 1.3rem);
-  font-weight: 400;
-  letter-spacing: -.02em;
-  line-height: 1.3;
-  quotes: "\201C" "\201D";
+  quotes: none;
   text-wrap: balance;
 }
 
+.problem__turn--customer {
+  align-self: flex-start;
+}
+
+.problem__turn--customer q {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 1.1rem 1.1rem 1.1rem .3rem;
+  color: rgba(255, 255, 255, .72);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  letter-spacing: -.015em;
+  line-height: 1.35;
+  padding: .75rem 1.1rem;
+}
+
 .problem__turn--lead q {
-  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
   font-weight: 500;
-  letter-spacing: -.04em;
-  line-height: 1.1;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  padding: .9rem 1.25rem;
 }
 
 .problem__turn em {
@@ -1224,9 +1251,19 @@ body { background: var(--page-bg) !important; }
   font-weight: 500;
 }
 
-.problem__turn:not(.problem__turn--lead) {
-  border-left: 1px solid rgba(255, 255, 255, .22);
-  padding-left: 1.1rem;
+.problem__turn--ai {
+  align-items: flex-end;
+  align-self: flex-end;
+}
+
+.problem__turn--ai q {
+  background: var(--problem-surface-card);
+  border-radius: 1.1rem 1.1rem .3rem 1.1rem;
+  color: var(--problem-text-strong);
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: .6rem 1rem;
 }
 
 .problem__conclusion {
