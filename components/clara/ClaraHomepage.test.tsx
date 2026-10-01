@@ -38,6 +38,7 @@ describe("Clara homepage", () => {
     ).toBeVisible();
     expect(screen.getByText("Understand the context")).toBeVisible();
     expect(screen.getByText("Know what to do next")).toBeVisible();
+    expect(screen.getByText("Continue across channels")).toBeVisible();
     expect(screen.getByText("Know when to involve a human")).toBeVisible();
   });
 

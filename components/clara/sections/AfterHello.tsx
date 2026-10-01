@@ -1,4 +1,4 @@
-import { MessageSquareText, Route, UserRoundCheck } from "lucide-react";
+import { Layers, MessageSquareText, Route, UserRoundCheck } from "lucide-react";
 import { Reveal } from "../Reveal";
 
 const requirements = [
@@ -11,6 +11,11 @@ const requirements = [
     icon: Route,
     title: "Know what to do next",
     body: "Follow the right rules, access relevant information and take the appropriate action.",
+  },
+  {
+    icon: Layers,
+    title: "Continue across channels",
+    body: "Carry the conversation forward across phone, website and WhatsApp.",
   },
   {
     icon: UserRoundCheck,
