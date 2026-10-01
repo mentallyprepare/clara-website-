@@ -343,19 +343,26 @@ button:focus-visible {
 }
 
 .site-header {
-  align-items: center;
+  align-items: flex-start;
   background: transparent;
   border: 0;
   display: flex;
-  height: 5rem;
   justify-content: center;
   left: 0;
   padding: 0.75rem clamp(0.75rem, 3vw, 2rem) 0;
   pointer-events: none;
-  position: sticky;
+  position: fixed;
   right: 0;
   top: 0;
+  transform: translateY(0);
+  transition: transform 320ms cubic-bezier(.4,0,.2,1), opacity 240ms ease;
   z-index: 50;
+}
+
+.site-header--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(calc(-100% - 0.5rem));
 }
 
 .site-header__pill {
@@ -819,12 +826,12 @@ button:focus-visible {
 
 .metro-hero__title h1 {
   color: #f6f7fa;
-  font-size: clamp(3.1rem, 8.3vw, 8.6rem);
+  font-size: clamp(2.6rem, 6.6vw, 6.8rem);
   font-weight: 680;
-  letter-spacing: -.065em;
-  line-height: .92;
+  letter-spacing: -.055em;
+  line-height: .95;
   margin: 0;
-  max-width: 11ch;
+  max-width: 22ch;
   text-shadow: 0 7px 42px rgba(0,0,0,.48);
   text-wrap: balance;
 }

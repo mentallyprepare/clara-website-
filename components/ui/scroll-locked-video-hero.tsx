@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowRight, Volume2 } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import {
   useEffect,
   useRef,
@@ -96,14 +96,14 @@ export default function MetroHero({
       }
 
       if (taglineRef.current) {
-        const visibility = clamp((currentProgress - 0.72) / 0.2, 0, 1);
+        const visibility = clamp((currentProgress - 0.32) / 0.18, 0, 1);
         taglineRef.current.style.opacity = String(visibility);
         taglineRef.current.style.transform = `translateY(${(1 - visibility) * 24}px)`;
         taglineRef.current.style.filter = `blur(${(1 - visibility) * 9}px)`;
       }
 
       if (endStateRef.current) {
-        const visibility = clamp((currentProgress - 0.84) / 0.12, 0, 1);
+        const visibility = clamp((currentProgress - 0.52) / 0.16, 0, 1);
         endStateRef.current.style.opacity = String(visibility);
         endStateRef.current.style.transform = `translateY(${(1 - visibility) * 14}px)`;
         endStateRef.current.style.pointerEvents = visibility > 0.8 ? "auto" : "none";
@@ -148,8 +148,8 @@ export default function MetroHero({
       ref={sectionRef}
       style={{
         height: reduceMotion
-          ? "calc(100dvh - 3.25rem)"
-          : `calc(100dvh - 3.25rem + ${scrubDistance}px)`,
+          ? "100dvh"
+          : `calc(100dvh + ${scrubDistance}px)`,
         minHeight: "36rem",
         position: "relative",
         ...style,
@@ -169,13 +169,7 @@ export default function MetroHero({
 
         <div className="metro-hero__veil" aria-hidden="true" />
 
-        <div className="metro-hero__brand">
-          <span>Clara</span>
-          <small>by Claritel</small>
-        </div>
-
         <div className="metro-hero__title" ref={titleRef}>
-          <p>Voice · Website · WhatsApp</p>
           <h1>{title}</h1>
         </div>
 
@@ -194,10 +188,6 @@ export default function MetroHero({
         <div className="metro-hero__hint" ref={hintRef}>
           <span>{scrollHint}</span>
           <ArrowDown aria-hidden="true" size={16} />
-        </div>
-
-        <div className="metro-hero__audio-note">
-          <Volume2 aria-hidden="true" size={14} /> Visual preview · no audio
         </div>
 
         <div className="metro-hero__progress" aria-hidden="true">

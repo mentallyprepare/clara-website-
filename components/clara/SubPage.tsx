@@ -34,7 +34,7 @@ export function SubPage({
     <>
       <SiteHeader />
       <main className="subpage">
-        <section className="subpage-hero relative overflow-hidden bg-[#fcfcfd] px-6 pb-12 pt-10 md:pb-14 md:pt-14">
+        <section className="subpage-hero relative overflow-hidden bg-[#fcfcfd] px-6 pb-12 pt-28 md:pb-14 md:pt-32">
           {/* soft grid texture */}
           <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(45deg,#efeefb_0px_1px,transparent_1px_8px)] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_60%,transparent_110%)]" />
           {/* plum halo */}

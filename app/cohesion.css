@@ -448,7 +448,6 @@ main, header, footer { position: relative; z-index: 1; }
 /* ====== 2. HEADER — compact, refined ====== */
 
 .site-header {
-  height: 4.25rem !important;
   padding: 0.75rem clamp(0.75rem, 3vw, 2rem) 0 !important;
   background: transparent !important;
   border-bottom: 0 !important;
