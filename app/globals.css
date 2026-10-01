@@ -757,9 +757,15 @@ button:focus-visible {
 .clara-hero__cta-ghost:hover { color: #3e3868 !important; }
 .clara-hero__demo-note { color: #8a8d99; font-size: 0.78rem; line-height: 1.5; margin: 1.5rem 0 0; }
 
+#hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .metro-hero__stage {
   background: #05070d;
   height: 100dvh;
+  margin-top: 0;
   overflow: hidden;
   position: sticky;
   top: 0;
