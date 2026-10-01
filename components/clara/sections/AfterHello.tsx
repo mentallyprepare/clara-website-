@@ -1,4 +1,5 @@
 import { MessageSquareText, Route, UserRoundCheck } from "lucide-react";
+import ChatMessages from "@/components/ui/chat-messages-2";
 import { Reveal } from "../Reveal";
 
 const requirements = [
@@ -42,38 +43,7 @@ export function AfterHello() {
             <span>10:18 AM</span>
           </div>
 
-          <ol className="problem__turns" aria-label="The customer conversation">
-            <li className="problem__turn problem__turn--customer problem__turn--lead">
-              <small>Customer</small>
-              <q>
-                I need to <em>reschedule my appointment.</em>
-              </q>
-            </li>
-            <li className="problem__turn problem__turn--ai">
-              <small>Clara</small>
-              <q>Yes, sure.</q>
-            </li>
-            <li className="problem__turn problem__turn--customer">
-              <small>Customer</small>
-              <q>
-                Actually, can you also tell me <em>if my insurance covers it?</em>
-              </q>
-            </li>
-            <li className="problem__turn problem__turn--ai">
-              <small>Clara</small>
-              <q>Yes, sure.</q>
-            </li>
-            <li className="problem__turn problem__turn--customer">
-              <small>Customer</small>
-              <q>
-                And can you <em>send the details on WhatsApp?</em>
-              </q>
-            </li>
-            <li className="problem__turn problem__turn--ai">
-              <small>Clara</small>
-              <q>Yes, sure.</q>
-            </li>
-          </ol>
+          <ChatMessages className="problem__phone" />
 
           <p className="problem__conclusion">One conversation. Three different needs.</p>
         </Reveal>
