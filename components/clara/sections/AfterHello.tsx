@@ -80,10 +80,6 @@ export function AfterHello() {
           </ul>
         </Reveal>
       </div>
-
-      <p className="section-footnote problem__footnote">
-        Every conversation can take a different turn. Your AI needs to be ready for it.
-      </p>
     </section>
   );
 }

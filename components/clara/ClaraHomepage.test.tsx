@@ -41,9 +41,6 @@ describe("Clara homepage", () => {
     expect(screen.getByText("Understand the context")).toBeVisible();
     expect(screen.getByText("Know what to do next")).toBeVisible();
     expect(screen.getByText("Know when to involve a human")).toBeVisible();
-    expect(
-      screen.getByText(/every conversation can take a different turn/i),
-    ).toBeVisible();
   });
 
   it("shows client proof and the playbook sections", () => {
