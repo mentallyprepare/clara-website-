@@ -22,19 +22,17 @@ describe("Clara homepage", () => {
     expect(screen.getByText("I’ll take care of them.")).toBeInTheDocument();
   });
 
-  it("frames the problem with one call and what it requires", () => {
+  it("frames the problem with a looping conversation video and what it requires", () => {
     render(<ClaraHomepage />);
     expect(
       screen.getByRole("heading", {
         name: /ai can answer a call\. that doesn’t mean it can handle your business\./i,
       }),
     ).toBeVisible();
-    const turns = screen.getByRole("list", { name: /the customer conversation/i });
-    expect(within(turns).getAllByRole("listitem")).toHaveLength(6);
-    expect(within(turns).getByText(/reschedule my appointment/i)).toBeVisible();
-    expect(within(turns).getByText(/does my insurance cover the appointment/i)).toBeVisible();
-    expect(within(turns).getByText(/send the updated details on whatsapp/i)).toBeVisible();
-    expect(within(turns).getByText(/what date works better for you/i)).toBeVisible();
+    const video = screen.getByLabelText(/a customer conversation that grows/i);
+    expect(video.tagName).toBe("VIDEO");
+    expect(video).toHaveAttribute("loop");
+    expect(video).toHaveAttribute("src", "/Comp%201.mp4");
     expect(
       screen.getByRole("heading", { name: /what this conversation requires/i }),
     ).toBeVisible();

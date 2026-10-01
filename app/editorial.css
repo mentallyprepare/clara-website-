@@ -1176,6 +1176,16 @@ body { background: var(--page-bg) !important; }
   padding: clamp(1.25rem, 2.3vw, 2rem);
 }
 
+.problem__video {
+  aspect-ratio: 4 / 5;
+  border-radius: 1.5rem;
+  display: block;
+  height: auto;
+  max-height: 30rem;
+  max-width: 100%;
+  object-fit: cover;
+}
+
 .problem__needs {
   background: var(--problem-surface-card);
   border: 1px solid var(--problem-line);

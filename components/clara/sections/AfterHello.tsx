@@ -1,5 +1,4 @@
 import { MessageSquareText, Route, UserRoundCheck } from "lucide-react";
-import ChatMessages from "@/components/ui/chat-messages-2";
 import { Reveal } from "../Reveal";
 
 const requirements = [
@@ -55,7 +54,16 @@ export function AfterHello() {
         </Reveal>
 
         <Reveal className="problem__call" delay={40}>
-          <ChatMessages />
+          <video
+            aria-label="A customer conversation that grows from one request into three"
+            autoPlay
+            className="problem__video"
+            loop
+            muted
+            playsInline
+            preload="auto"
+            src="/Comp%201.mp4"
+          />
         </Reveal>
       </div>
     </section>
