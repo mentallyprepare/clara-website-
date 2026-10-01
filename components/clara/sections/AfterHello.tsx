@@ -1,6 +1,5 @@
 import { MessageSquareText, Route, UserRoundCheck } from "lucide-react";
 import { Reveal } from "../Reveal";
-import { SectionHeading } from "../SectionHeading";
 
 const requirements = [
   {
@@ -23,17 +22,17 @@ const requirements = [
 export function AfterHello() {
   return (
     <section className="story-section after-hello problem" id="after-hello">
-      <div className="after-hello__chapter" aria-hidden="true">
-        <span>01</span>
-        <strong>The problem</strong>
-        <i />
-      </div>
       <Reveal>
-        <SectionHeading
-          eyebrow="From answering to actually handling"
-          heading="AI can answer a call. That doesn’t mean it can handle your business."
-          summary="A conversation rarely stays on script. Customers change their minds, ask unexpected questions, need updates, or want to switch channels. Every turn requires context, the right response and sometimes a real action."
-        />
+        <header className="problem__header">
+          <h2>
+            AI can answer a call.{" "}
+            <br className="problem__break" />
+            That doesn’t mean it can handle your business.
+          </h2>
+          <p>
+            A conversation rarely stays on script. Customers change their minds, ask unexpected questions, need updates, or want to switch channels. Every turn requires context, the right response and sometimes a real action.
+          </p>
+        </header>
       </Reveal>
 
       <div className="problem__panel" aria-label="A customer conversation and what it requires">

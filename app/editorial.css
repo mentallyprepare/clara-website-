@@ -1133,10 +1133,26 @@ body { background: var(--page-bg) !important; }
   font-family: Roboto, "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
-.problem .section-heading h2 {
-  font-size: clamp(2.25rem, 4.2vw, 4rem);
-  line-height: 1.04;
-  max-width: 20ch;
+.story-section.problem {
+  padding-block: clamp(1.25rem, 3vh, 2.5rem) !important;
+}
+
+.problem__header h2 {
+  color: var(--problem-text-strong);
+  font-size: clamp(1.9rem, 3.3vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: -.045em;
+  line-height: 1.06;
+  margin: 0;
+}
+
+.problem__header p {
+  color: var(--problem-text-muted);
+  font-size: clamp(.95rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
+  margin: clamp(.9rem, 1.6vw, 1.25rem) 0 0 auto;
+  max-width: 38rem;
+  text-align: right;
 }
 
 .problem__panel {
@@ -1146,14 +1162,14 @@ body { background: var(--page-bg) !important; }
   display: grid;
   gap: 1px;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-top: clamp(1.25rem, 2.4vw, 2rem);
   overflow: hidden;
 }
 
 .problem__call,
 .problem__needs {
   min-width: 0;
-  padding: clamp(1.75rem, 3.4vw, 3rem);
+  padding: clamp(1.25rem, 2.3vw, 2rem);
 }
 
 .problem__call {
@@ -1177,16 +1193,16 @@ body { background: var(--page-bg) !important; }
 
 .problem__turns {
   display: grid;
-  gap: clamp(1.25rem, 2.2vw, 1.75rem);
+  gap: clamp(.9rem, 1.6vw, 1.25rem);
   list-style: none;
-  margin: clamp(2.5rem, 6vw, 4.5rem) 0;
+  margin: clamp(1.25rem, 2.6vw, 2rem) 0;
   padding: 0;
 }
 
 .problem__turn q {
   color: var(--problem-text-on-brand-muted);
   display: block;
-  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-size: clamp(1.05rem, 1.45vw, 1.3rem);
   font-weight: 400;
   letter-spacing: -.02em;
   line-height: 1.3;
@@ -1195,7 +1211,7 @@ body { background: var(--page-bg) !important; }
 }
 
 .problem__turn--lead q {
-  font-size: clamp(1.75rem, 2.9vw, 2.6rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
   font-weight: 500;
   letter-spacing: -.04em;
   line-height: 1.1;
@@ -1240,7 +1256,7 @@ body { background: var(--page-bg) !important; }
 .problem__needs ul {
   display: grid;
   list-style: none;
-  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  margin: clamp(.9rem, 1.8vw, 1.25rem) 0 0;
   padding: 0;
 }
 
@@ -1248,7 +1264,7 @@ body { background: var(--page-bg) !important; }
   align-items: flex-start;
   display: flex;
   gap: 1rem;
-  padding-block: clamp(1.1rem, 2vw, 1.5rem);
+  padding-block: clamp(.8rem, 1.4vw, 1.1rem);
 }
 
 .problem__needs li + li { border-top: 1px solid var(--problem-line); }
@@ -1286,9 +1302,11 @@ body { background: var(--page-bg) !important; }
 .problem__footnote {
   color: var(--problem-text-muted);
   font-size: 1rem;
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
 @media (max-width: 900px) {
   .problem__panel { grid-template-columns: 1fr; }
+  .problem__break { display: none; }
+  .problem__header p { margin-left: 0; text-align: left; }
 }
