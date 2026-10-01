@@ -22,18 +22,32 @@ describe("Clara homepage", () => {
     expect(screen.getByText("I’ll take care of them.")).toBeInTheDocument();
   });
 
-  it("shows the full action path and human boundary", () => {
+  it("frames the problem with one call and what it requires", () => {
     render(<ClaraHomepage />);
-    const actionPath = screen.getByRole("list", {
-      name: /conversation-to-action workflow/i,
-    });
-    expect(within(actionPath).getAllByRole("listitem")).toHaveLength(4);
     expect(
-      within(actionPath).getByText(/opening in Bristol, Leeds and Glasgow/i),
+      screen.getByRole("heading", {
+        name: /ai can answer a call\. that doesn’t mean it can handle your business\./i,
+      }),
     ).toBeVisible();
-    expect(within(actionPath).getByText(/fit checked/i)).toBeVisible();
-    expect(within(actionPath).getByText("Sales-ready lead")).toBeVisible();
-    expect(within(actionPath).getByText(/pricing exceptions go to Rohan/i)).toBeVisible();
+    const turns = screen.getByRole("list", { name: /the customer conversation/i });
+    expect(within(turns).getAllByRole("listitem")).toHaveLength(3);
+    expect(within(turns).getByText(/reschedule my appointment/i)).toBeVisible();
+    expect(within(turns).getByText(/if my insurance covers it/i)).toBeVisible();
+    expect(within(turns).getByText(/send the details on whatsapp/i)).toBeVisible();
+    expect(screen.getByText("One conversation. Three different needs.")).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: /what this conversation requires/i }),
+    ).toBeVisible();
+    expect(screen.getByText("Understand the context")).toBeVisible();
+    expect(screen.getByText("Know what to do next")).toBeVisible();
+    expect(screen.getByText("Know when to involve a human")).toBeVisible();
+    expect(
+      screen.getByText(/every conversation can take a different turn/i),
+    ).toBeVisible();
+  });
+
+  it("shows client proof and the playbook sections", () => {
+    render(<ClaraHomepage />);
     expect(
       screen.getByRole("list", { name: /teams working with claritel/i }),
     ).toBeVisible();

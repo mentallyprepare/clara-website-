@@ -27,8 +27,9 @@ export const claraSections: readonly ClaraSection[] = [
   },
   {
     id: "after-hello",
-    heading: "The hard part starts after hello.",
-    summary: "An answer is useful when the next step happens.",
+    heading: "AI can answer a call. That doesn’t mean it can handle your business.",
+    summary:
+      "Handling a conversation takes context, the ability to act and the judgment to know when a human should step in.",
   },
   {
     id: "operating-system",

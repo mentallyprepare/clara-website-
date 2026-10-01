@@ -1119,3 +1119,176 @@ body { background: var(--page-bg) !important; }
   .invitation__inner { padding-top: 3.25rem !important; }
 }
 
+
+/* 01 — The problem: one call that keeps changing, and what it takes to handle it. */
+.problem {
+  --problem-surface-brand: #20203d;
+  --problem-surface-card: #fff;
+  --problem-surface-secondary: #f7f7ff;
+  --problem-text-on-brand: #fff;
+  --problem-text-on-brand-muted: rgba(255, 255, 255, .58);
+  --problem-text-strong: #1b1b3c;
+  --problem-text-muted: #61676b;
+  --problem-line: #e1e1ff;
+  font-family: Roboto, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+.problem .section-heading h2 {
+  font-size: clamp(2.25rem, 4.2vw, 4rem);
+  line-height: 1.04;
+  max-width: 20ch;
+}
+
+.problem__panel {
+  background: var(--problem-line);
+  border: 1px solid var(--problem-line);
+  border-radius: 1.5rem;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+.problem__call,
+.problem__needs {
+  min-width: 0;
+  padding: clamp(1.75rem, 3.4vw, 3rem);
+}
+
+.problem__call {
+  background: var(--problem-surface-brand);
+  color: var(--problem-text-on-brand);
+  display: flex;
+  flex-direction: column;
+}
+
+.problem__meta {
+  color: var(--problem-text-on-brand-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .72rem;
+  font-weight: 500;
+  gap: .5rem 1rem;
+  justify-content: space-between;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.problem__turns {
+  display: grid;
+  gap: clamp(1.25rem, 2.2vw, 1.75rem);
+  list-style: none;
+  margin: clamp(2.5rem, 6vw, 4.5rem) 0;
+  padding: 0;
+}
+
+.problem__turn q {
+  color: var(--problem-text-on-brand-muted);
+  display: block;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.3;
+  quotes: "\201C" "\201D";
+  text-wrap: balance;
+}
+
+.problem__turn--lead q {
+  font-size: clamp(1.75rem, 2.9vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.1;
+}
+
+.problem__turn em {
+  color: var(--problem-text-on-brand);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.problem__turn:not(.problem__turn--lead) {
+  border-left: 1px solid rgba(255, 255, 255, .22);
+  padding-left: 1.1rem;
+}
+
+.problem__conclusion {
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  color: var(--problem-text-on-brand);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin: auto 0 0;
+  padding-top: 1.25rem;
+}
+
+.problem__needs {
+  background: var(--problem-surface-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.problem__needs h3 {
+  color: var(--problem-text-strong);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.problem__needs ul {
+  display: grid;
+  list-style: none;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  padding: 0;
+}
+
+.problem__needs li {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  padding-block: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.problem__needs li + li { border-top: 1px solid var(--problem-line); }
+.problem__needs li:last-child { padding-bottom: 0; }
+
+.problem__icon {
+  align-items: center;
+  background: var(--problem-surface-secondary);
+  border: 1px solid var(--problem-line);
+  border-radius: .85rem;
+  color: var(--problem-text-strong);
+  display: flex;
+  flex: 0 0 auto;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.problem__needs strong {
+  color: var(--problem-text-strong);
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -.015em;
+}
+
+.problem__needs p {
+  color: var(--problem-text-muted);
+  font-size: .92rem;
+  line-height: 1.55;
+  margin: .3rem 0 0;
+  max-width: 28rem;
+}
+
+.problem__footnote {
+  color: var(--problem-text-muted);
+  font-size: 1rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 900px) {
+  .problem__panel { grid-template-columns: 1fr; }
+}
