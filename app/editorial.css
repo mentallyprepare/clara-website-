@@ -1253,3 +1253,14 @@ body { background: var(--page-bg) !important; }
   .problem__call { order: -1; }
   .problem__break { display: none; }
 }
+
+/* Uniform vertical rhythm: 100px top and bottom on every page section. */
+.story-section,
+.story-section.after-hello,
+#fit-finder,
+.improvement-loop-section,
+#improvement-loop.improvement-loop-section,
+.invitation {
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
+}
