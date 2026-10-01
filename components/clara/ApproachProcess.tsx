@@ -1,36 +1,30 @@
-import { Compass, Library, PenLine, ShieldCheck, Workflow, RefreshCw } from "lucide-react";
+import { Compass, Target, Users } from "lucide-react";
 import { Reveal } from "./Reveal";
+
+const tags = ["Business goals", "Customer needs", "Workflows", "Policies"] as const;
 
 const steps = [
   {
+    key: "business",
     icon: Compass,
-    title: "Business understanding",
-    detail: "Understand your goals, customers, processes and the conversations that matter to your organization.",
+    label: "Start with your business",
+    title: "Every business works differently.",
+    detail: "Understand your business goals, customer needs, workflows and policies before designing the AI agent.",
+    tags,
   },
   {
-    icon: Library,
-    title: "Context & knowledge",
-    detail: "Bring together relevant business information, FAQs, policies and customer context.",
+    key: "team",
+    icon: Users,
+    label: "The Clara team",
+    title: "We build around how you work.",
+    detail: "Our team translates your business requirements into optimized prompts, relevant knowledge, actions and clear escalation rules.",
   },
   {
-    icon: PenLine,
-    title: "Optimized instructions",
-    detail: "Build and refine the agent's prompt around your business requirements, desired outcomes and conversation scenarios.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Rules & boundaries",
-    detail: "Define how the agent should respond, what it can do, which rules it must follow and when it should escalate to a human.",
-  },
-  {
-    icon: Workflow,
-    title: "Tools & actions",
-    detail: "Connect the agent to the relevant tools and workflows it needs to move conversations forward.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Test & refine",
-    detail: "Evaluate the agent against real-world scenarios, identify gaps and refine its behavior to better serve your business goals.",
+    key: "outcome",
+    icon: Target,
+    label: "The outcome",
+    title: "An agent built for your business.",
+    detail: "Conversations shaped around your goals, with the right context and next steps.",
   },
 ] as const;
 
@@ -46,43 +40,34 @@ export function ApproachProcess() {
             customers, your processes and what every conversation needs to achieve.
           </p>
           <p className="clara-process__lede">
-            Then we translate that understanding into optimized instructions, relevant knowledge,
-            business rules and actions — building an agent around the way your organization
-            actually works.
-          </p>
-        </Reveal>
-        <Reveal className="clara-process__statement" delay={120}>
-          <p>
-            Not just a prompt.
-            <strong>A process built around your business.</strong>
+            Then we build and refine an agent around those needs — with the right instructions,
+            knowledge, actions and boundaries.
           </p>
         </Reveal>
       </div>
 
-      <div className="clara-process__flow">
-        <ol className="clara-process__steps" aria-label="How the Clara team builds your agent">
-          {steps.map(({ icon: Icon, title, detail }, index) => (
-            <li key={title}>
-              <Reveal className="clara-process__card" delay={index * 90}>
+      <ol className="clara-process__steps" aria-label="From your business to your agent">
+        {steps.map((step, index) => {
+          const { icon: Icon } = step;
+          return (
+            <li className={`clara-process__item clara-process__item--${step.key}`} key={step.key}>
+              <Reveal className="clara-process__card" delay={index * 120}>
                 <span className="clara-process__icon"><Icon aria-hidden="true" size={20} strokeWidth={1.6} /></span>
                 <div>
-                  <small>{String(index + 1).padStart(2, "0")}</small>
-                  <h3>{title}</h3>
-                  <p>{detail}</p>
+                  <small>{step.label}</small>
+                  <h3>{step.title}</h3>
+                  <p>{step.detail}</p>
+                  {"tags" in step ? (
+                    <ul className="clara-process__tags">
+                      {step.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                    </ul>
+                  ) : null}
                 </div>
               </Reveal>
             </li>
-          ))}
-        </ol>
-
-        <Reveal className="clara-process__outcome" delay={600}>
-          <h3>Built around your business</h3>
-          <p>
-            An AI agent designed to handle conversations with the right context, consistent
-            guidance and a clear path to action.
-          </p>
-        </Reveal>
-      </div>
+          );
+        })}
+      </ol>
     </div>
   );
 }
