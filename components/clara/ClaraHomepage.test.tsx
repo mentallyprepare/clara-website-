@@ -31,11 +31,10 @@ describe("Clara homepage", () => {
     ).toBeVisible();
     const turns = screen.getByRole("list", { name: /the customer conversation/i });
     expect(within(turns).getAllByRole("listitem")).toHaveLength(6);
-    expect(within(turns).getAllByText("Yes, sure.")).toHaveLength(3);
     expect(within(turns).getByText(/reschedule my appointment/i)).toBeVisible();
-    expect(within(turns).getByText(/if my insurance covers it/i)).toBeVisible();
-    expect(within(turns).getByText(/send the details on whatsapp/i)).toBeVisible();
-    expect(screen.getByText("One conversation. Three different needs.")).toBeVisible();
+    expect(within(turns).getByText(/does my insurance cover the appointment/i)).toBeVisible();
+    expect(within(turns).getByText(/send the updated details on whatsapp/i)).toBeVisible();
+    expect(within(turns).getByText(/what date works better for you/i)).toBeVisible();
     expect(
       screen.getByRole("heading", { name: /what this conversation requires/i }),
     ).toBeVisible();

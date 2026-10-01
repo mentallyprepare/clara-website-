@@ -38,14 +38,7 @@ export function AfterHello() {
 
       <div className="problem__panel" aria-label="A customer conversation and what it requires">
         <Reveal className="problem__call" delay={40}>
-          <div className="problem__meta">
-            <span>Incoming call · Customer support</span>
-            <span>10:18 AM</span>
-          </div>
-
-          <ChatMessages className="problem__phone" />
-
-          <p className="problem__conclusion">One conversation. Three different needs.</p>
+          <ChatMessages />
         </Reveal>
 
         <Reveal className="problem__needs" delay={100}>
