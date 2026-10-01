@@ -15,6 +15,12 @@ export function SiteHeader({ isHomepage = false }: { isHomepage?: boolean }) {
       <nav className="site-nav" aria-label="Primary navigation">
         <div className="site-nav__desktop">
           <SlideTabs />
+          <Link
+            className="nav-cta nav-cta--secondary"
+            href={isHomepage ? "#invitation" : "/#invitation"}
+          >
+            Book Demo
+          </Link>
           <Link className="nav-cta" href={isHomepage ? "#invitation" : "/#invitation"}>
             Talk to Clara
           </Link>

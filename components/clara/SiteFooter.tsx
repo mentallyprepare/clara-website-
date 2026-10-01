@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteTabs } from "@/lib/site-nav";
+import { footerTabs } from "@/lib/site-nav";
 
 export function SiteFooter() {
   return (
@@ -11,7 +11,7 @@ export function SiteFooter() {
           <p>Voice · Website · WhatsApp — one playbook, across every channel.</p>
         </div>
         <nav className="site-footer__nav" aria-label="Footer navigation">
-          {siteTabs.map((tab) => (
+          {footerTabs.map((tab) => (
             <Link key={tab.href} href={tab.href}>
               {tab.label}
             </Link>

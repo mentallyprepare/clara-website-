@@ -474,6 +474,17 @@ button:focus-visible {
   color: #fff;
 }
 
+.site-nav .nav-cta--secondary {
+  background: #fff;
+  border: 1px solid #1b1b3c;
+  color: #1b1b3c;
+}
+
+.site-nav .nav-cta--secondary:hover {
+  background: #f0edff;
+  color: #1b1b3c;
+}
+
 /* Desktop nav (pill + CTA) vs. mobile hamburger */
 .site-nav__desktop { align-items: center; display: flex; gap: clamp(0.7rem, 2.5vw, 1.25rem); }
 .mobile-nav { display: none; }
@@ -522,6 +533,8 @@ button:focus-visible {
 .mobile-nav__panel a.is-active { background: #1b1b3c; color: #fff; }
 .mobile-nav__panel a.mobile-nav__cta { background: #1b1b3c; color: #fff; justify-content: center; margin-top: 0.4rem; }
 .mobile-nav__panel a.mobile-nav__cta:hover { background: #3e3868; color: #fff; }
+.mobile-nav__panel a.mobile-nav__cta--secondary { background: #fff; border: 1px solid #1b1b3c; color: #1b1b3c; }
+.mobile-nav__panel a.mobile-nav__cta--secondary:hover { background: #f0edff; color: #1b1b3c; }
 
 /* Shared site footer (subpages) */
 .site-footer { background: #fcfcfd; border-top: 1px solid #e6e4f2; padding: clamp(2.5rem, 5vw, 4rem) 4vw 2rem; }

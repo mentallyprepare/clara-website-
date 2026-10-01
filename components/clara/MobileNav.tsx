@@ -48,6 +48,14 @@ export function MobileNav({ isHomepage = false }: { isHomepage?: boolean }) {
             })}
             <Link
               href={isHomepage ? "#invitation" : "/#invitation"}
+              className="mobile-nav__cta mobile-nav__cta--secondary"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+            >
+              Book Demo
+            </Link>
+            <Link
+              href={isHomepage ? "#invitation" : "/#invitation"}
               className="mobile-nav__cta"
               role="menuitem"
               onClick={() => setOpen(false)}
