@@ -49,9 +49,12 @@ export function PixelLogoGrid() {
     <div className="pixel-logo-grid" onMouseLeave={() => setActive(null)}>
       <div className="pixel-logo-grid__intro">
         <p className="eyebrow">Already at work</p>
-        <h2>Built around real customer operations.</h2>
+        <h2>
+          <span>Built around</span>
+          <span>real customer</span>
+          <span>operations.</span>
+        </h2>
         <p>Across finance, technology, logistics and service.</p>
-        <span><i /> Move across the grid</span>
       </div>
 
       <div className="pixel-logo-grid__clients" role="list" aria-label="Teams working with Claritel">

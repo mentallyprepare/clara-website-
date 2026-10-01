@@ -931,10 +931,9 @@ body { background: var(--page-bg) !important; }
 
 .pixel-logo-grid__intro > * { position: relative; z-index: 1; }
 .pixel-logo-grid__intro .eyebrow { color: #b9b6dc; margin: 0 0 1.1rem; }
-.pixel-logo-grid__intro h2 { font-size: clamp(2rem, 3.2vw, 3.5rem); font-weight: 500; letter-spacing: -.055em; line-height: .98; margin: 0; max-width: 9ch; }
-.pixel-logo-grid__intro > p:not(.eyebrow) { color: #c9c7d5; font-size: .9rem; line-height: 1.55; margin: 1.2rem 0 2.5rem; max-width: 23rem; }
-.pixel-logo-grid__intro > span { align-items: center; color: #918fa8; display: flex; font-size: .68rem; gap: .5rem; letter-spacing: .08em; text-transform: uppercase; }
-.pixel-logo-grid__intro > span i { background: #74b8a8; display: block; height: .42rem; width: .42rem; }
+.pixel-logo-grid__intro h2 { font-size: clamp(2rem, 3.2vw, 3.5rem); font-weight: 500; letter-spacing: -.055em; line-height: .98; margin: 0; }
+.pixel-logo-grid__intro h2 span { display: block; white-space: nowrap; }
+.pixel-logo-grid__intro > p:not(.eyebrow) { color: #c9c7d5; font-size: .9rem; line-height: 1.55; margin: 1.2rem 0 0; max-width: 23rem; }
 
 .pixel-logo-grid__clients { background: var(--line); display: grid; gap: 1px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .pixel-logo-card { background: #fbfafc; min-height: 12rem; outline: none; overflow: hidden; padding: 1.2rem; position: relative; }
