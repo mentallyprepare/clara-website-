@@ -1264,3 +1264,9 @@ body { background: var(--page-bg) !important; }
   padding-top: 100px !important;
   padding-bottom: 100px !important;
 }
+
+/* Equal 100px breathing room above and below the divider after the logo grid. */
+.operating-playbook {
+  margin-top: 100px !important;
+  padding-top: 100px !important;
+}
