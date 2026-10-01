@@ -52,7 +52,7 @@ body { background: var(--page-bg) !important; }
 
 .story-section {
   max-width: 82rem;
-  padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem) !important;
+  padding: 3.75rem clamp(1.25rem, 4vw, 4rem) !important;
 }
 
 .story-section + .story-section,
@@ -147,7 +147,7 @@ body { background: var(--page-bg) !important; }
 .workbench__boundary > span { box-shadow: none !important; }
 
 /* 02 — proof first, then a single live conversation artifact. */
-.operating-system { padding-top: clamp(3rem, 5vw, 5rem) !important; }
+.operating-system { padding-top: 3.75rem !important; }
 .client-proof { background: transparent !important; border-radius: 0 !important; }
 .client-logo { border-color: var(--line); }
 .operating-playbook {
@@ -265,7 +265,7 @@ body { background: var(--page-bg) !important; }
 .morning-receipt small { color: #b9b6c8; line-height: 1.5; margin-top: auto; padding-top: 2rem; }
 
 /* 05 — interactive, but deliberately plain and useful. */
-#fit-finder { padding-block: clamp(4rem, 7vw, 7rem) !important; }
+#fit-finder { padding-block: 3.75rem !important; }
 #fit-finder > div { max-width: 70rem; text-align: left; }
 #fit-finder h2 { font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 500; max-width: 13ch; }
 #fit-finder h2 span { color: inherit; font-family: inherit; font-style: normal; }
@@ -302,7 +302,7 @@ body { background: var(--page-bg) !important; }
 .review-panel { border-color: #cfccd9 !important; border-radius: .75rem; box-shadow: none !important; }
 
 /* 08 — one connected audit rail, not four interchangeable cards. */
-.improvement-loop-section { background: #17172c; color: #fff; padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4rem); }
+.improvement-loop-section { background: #17172c; color: #fff; padding: 3.75rem clamp(1.25rem, 4vw, 4rem); }
 .improvement-loop-inner { margin: 0 auto; max-width: 82rem; }
 .improvement-loop-heading { display: grid; gap: 1rem clamp(2rem, 7vw, 8rem); grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr); }
 .improvement-loop-heading .eyebrow { color: #b4b4ec; grid-column: 1 / -1; margin: 0; }
@@ -461,7 +461,7 @@ body { background: var(--page-bg) !important; }
 .invitation__ticker > div { align-items: center; animation: clara-marquee 24s linear infinite; color: #aba9bb; display: inline-flex; gap: 1.5rem; }
 .invitation__ticker span { font-size: .68rem; font-weight: 700; letter-spacing: .15em; }
 .invitation__ticker i { background: #77728e; border-radius: 50%; height: .28rem; width: .28rem; }
-.invitation__inner { display: grid; gap: clamp(3rem,8vw,10rem); grid-template-columns: minmax(0,1.25fr) minmax(20rem,.75fr); margin: 0 auto !important; max-width: 82rem !important; padding: clamp(5rem,9vw,9rem) 0 10rem; }
+.invitation__inner { display: grid; gap: clamp(3rem,8vw,10rem); grid-template-columns: minmax(0,1.25fr) minmax(20rem,.75fr); margin: 0 auto !important; max-width: 82rem !important; padding: 3.75rem 0 10rem; }
 .invitation__copy .eyebrow { margin: 0 0 1.4rem; }
 .invitation h2 { font-size: clamp(3.4rem, 7vw, 7rem) !important; max-width: 8.5ch; }
 .invitation__aside { align-self: end; }
@@ -1134,7 +1134,7 @@ body { background: var(--page-bg) !important; }
 }
 
 .story-section.problem {
-  padding-block: clamp(1.25rem, 3vh, 2.5rem) !important;
+  padding-block: 3.75rem !important;
 }
 
 .problem__header h2 {
@@ -1148,11 +1148,12 @@ body { background: var(--page-bg) !important; }
 
 .problem__header p {
   color: var(--problem-text-muted);
-  font-size: clamp(.95rem, 1.2vw, 1.05rem);
+  font-size: clamp(.9rem, 1.1vw, 1rem);
   line-height: 1.6;
-  margin: clamp(.9rem, 1.6vw, 1.25rem) 0 0 auto;
-  max-width: 38rem;
-  text-align: right;
+  margin: clamp(.9rem, 1.6vw, 1.25rem) 0 0;
+  max-width: 62rem;
+  text-align: left;
+  text-wrap: balance;
 }
 
 .problem__panel {
@@ -1308,5 +1309,4 @@ body { background: var(--page-bg) !important; }
 @media (max-width: 900px) {
   .problem__panel { grid-template-columns: 1fr; }
   .problem__break { display: none; }
-  .problem__header p { margin-left: 0; text-align: left; }
 }
