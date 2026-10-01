@@ -395,7 +395,7 @@ button:focus-visible {
 
 .site-brand__img {
   display: block;
-  height: 1.75rem;
+  height: 2.4rem;
   width: auto;
 }
 
@@ -759,10 +759,10 @@ button:focus-visible {
 
 .metro-hero__stage {
   background: #05070d;
-  height: calc(100dvh - 3.25rem);
+  height: 100dvh;
   overflow: hidden;
   position: sticky;
-  top: 3.25rem;
+  top: 0;
   width: 100%;
 }
 
