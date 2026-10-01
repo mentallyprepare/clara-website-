@@ -120,8 +120,8 @@ body::after {
 body { background: var(--page-bg) !important; }
 
 .site-header {
-  background: rgba(247, 246, 250, 0.96) !important;
-  border-bottom: 1px solid var(--line) !important;
+  background: transparent !important;
+  border-bottom: 0 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -448,12 +448,12 @@ main, header, footer { position: relative; z-index: 1; }
 /* ====== 2. HEADER — compact, refined ====== */
 
 .site-header {
-  height: 3.25rem !important;
-  padding: 0 clamp(1rem, 3vw, 3rem) !important;
-  background: rgba(249, 248, 253, 0.82) !important;
-  border-bottom: 1px solid rgba(83, 75, 130, 0.06) !important;
-  backdrop-filter: blur(24px) saturate(1.5) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(1.5) !important;
+  height: 4.25rem !important;
+  padding: 0.75rem clamp(0.75rem, 3vw, 2rem) 0 !important;
+  background: transparent !important;
+  border-bottom: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   z-index: 50 !important;
 }
 
@@ -462,18 +462,8 @@ main, header, footer { position: relative; z-index: 1; }
   min-height: 2rem !important;
 }
 
-.site-brand__logo {
-  height: 1.75rem !important;
-  width: 1.75rem !important;
-}
-
-.site-brand strong {
-  font-size: 0.85rem !important;
-}
-
-.site-brand small {
-  font-size: 0.58rem !important;
-  margin-top: 0.15rem !important;
+.site-brand__img {
+  height: 1.5rem !important;
 }
 
 /* Nav tabs smaller */
