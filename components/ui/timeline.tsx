@@ -159,11 +159,11 @@ export default function Timeline({
     if (!section) return;
 
     const isMobile = window.innerWidth < 600;
-    const slidePercent = isMobile ? -40 : -45;
+    const slidePercent = isMobile ? -35 : -38;
     const lineWidth = isMobile ? "65%" : "98%";
     const lineStart = isMobile ? "top 30%" : "top 25%";
-    const slideEnd = isMobile ? "82% 50%" : "92% bottom";
-    const lineEnd = isMobile ? "80% 50%" : "92% bottom";
+    const slideEnd = isMobile ? "82% 50%" : "90% bottom";
+    const lineEnd = isMobile ? "80% 50%" : "90% bottom";
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -297,14 +297,14 @@ export default function Timeline({
     const positions: ReadonlyArray<readonly [number, number]> =
       window.innerWidth < 600
         ? [
-            [22, 38],
-            [40, 56],
-            [58, 74],
+            [20, 36],
+            [38, 54],
+            [56, 72],
           ]
         : [
-            [10, 35],
-            [30, 55],
-            [50, 75],
+            [15, 38],
+            [35, 58],
+            [55, 78],
           ];
 
     stages.forEach((stage, index) => {
@@ -327,46 +327,50 @@ export default function Timeline({
     <section
       ref={sectionRef}
       id="approach"
-      className="h-[180vw] max-[600px]:h-[350vh] w-full relative"
+      className="h-[140vw] max-[600px]:h-[280vh] w-full relative"
       style={sectionStyle}
     >
+      {/* Static intro — sits above the pinned scroll */}
+      <div
+        className="flex flex-col items-center text-center px-[5vw] pt-[6vw] pb-[2vw] max-[600px]:pt-[14vw] max-[600px]:pb-[6vw]"
+        style={sectionStyle}
+      >
+        {eyebrow ? (
+          <p
+            className="text-[.85vw] font-semibold uppercase tracking-[.18em] mb-[1.2vw] max-[600px]:text-[3vw] max-[600px]:mb-[3vw]"
+            style={{ color: activeColor }}
+          >
+            {eyebrow}
+          </p>
+        ) : null}
+        <h2 className="text-[3.2vw] leading-[1.1] font-semibold max-w-[36vw] max-[600px]:text-[7.5vw] max-[600px]:max-w-[85vw]">
+          {title}
+        </h2>
+        <p
+          className="text-[1.15vw] leading-[1.55] max-w-[32vw] mt-[1.2vw] max-[600px]:text-[4vw] max-[600px]:max-w-[85vw] max-[600px]:mt-[3vw]"
+          style={mutedTextStyle}
+        >
+          {subtitle}
+        </p>
+      </div>
+
+      {/* Pinned horizontal-scroll track */}
       <div className="h-screen w-screen sticky top-0 pt-[8%] overflow-hidden max-[600px]:top-[5%]">
         <div
           ref={wholeSliderRef}
-          className="mr-[2vw] flex h-[30vw] w-[200vw] items-center gap-[5vw] px-[5vw] max-[600px]:h-[80vh] max-[600px]:w-[600vw] max-[600px]:px-[7vw]"
+          className="mr-[2vw] flex h-[30vw] w-[160vw] items-center gap-[4vw] px-[5vw] max-[600px]:h-[80vh] max-[600px]:w-[500vw] max-[600px]:px-[7vw]"
         >
-          {/* Intro panel */}
-          <div className="h-full w-[32vw] flex flex-col justify-center gap-[1.5vw] max-[600px]:w-[85vw] max-[600px]:gap-[3vw]">
-            {imageUrl ? (
-              <div className="w-full h-[14vw] overflow-hidden rounded-[1vw] mb-[1vw] max-[600px]:h-[40vw] max-[600px]:rounded-[3vw] max-[600px]:mb-[2vw]">
-                <img
-                  src={imageUrl}
-                  alt={imageAlt}
-                  draggable={false}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            ) : null}
-            {eyebrow ? (
-              <p
-                className="text-[.85vw] font-semibold uppercase tracking-[.18em] max-[600px]:text-[3vw]"
-                style={{ color: activeColor }}
-              >
-                {eyebrow}
-              </p>
-            ) : null}
-            <h2 className="text-[2.8vw] leading-[1.05] font-semibold max-[600px]:text-[7vw]">
-              {title}
-            </h2>
-            <p
-              className="text-[1.15vw] leading-[1.55] max-w-[28vw] max-[600px]:text-[4vw] max-[600px]:max-w-[80vw]"
-              style={mutedTextStyle}
-            >
-              {subtitle}
-            </p>
+          {/* Panel 1: Image */}
+          <div className="h-full w-[28vw] flex-shrink-0 overflow-hidden rounded-[1vw] max-[600px]:h-[60vw] max-[600px]:w-[85vw] max-[600px]:rounded-[4vw]">
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              draggable={false}
+              className="h-full w-full object-cover"
+            />
           </div>
 
-          {/* Timeline track */}
+          {/* Panels 2-4: Timeline track */}
           <div className="relative h-full w-full">
             {/* Connector line */}
             <div className="w-full absolute left-0 top-[49%] translate-y-[-50%] flex items-center h-fit">
@@ -384,13 +388,13 @@ export default function Timeline({
               />
             </div>
 
-            {/* Top row (stages at even indices) */}
-            <div className="flex h-1/2 w-full items-center justify-start gap-[.5vw]">
-              <div className="w-full flex h-full gap-x-[18vw] max-[600px]:gap-x-[50vw]">
+            {/* Top row (stages at even indices: 0, 2) */}
+            <div className="flex h-1/2 w-full items-center justify-start">
+              <div className="w-full flex h-full gap-x-[14vw] max-[600px]:gap-x-[40vw]">
                 {topStages.map((stage) => (
                   <div
                     key={`top-${stage.id}`}
-                    className="relative h-full w-[35vw] px-[3vw] max-[600px]:flex max-[600px]:w-[80vw] max-[600px]:flex-col max-[600px]:px-[7vw]"
+                    className="relative h-full w-[30vw] px-[3vw] max-[600px]:flex max-[600px]:w-[75vw] max-[600px]:flex-col max-[600px]:px-[7vw]"
                   >
                     <div className="w-full absolute left-0 bottom-0 top-0 h-full">
                       <div
@@ -435,13 +439,13 @@ export default function Timeline({
               </div>
             </div>
 
-            {/* Bottom row (stages at odd indices) */}
+            {/* Bottom row (stages at odd indices: 1) */}
             <div className="h-1/2 flex items-center justify-start w-full">
-              <div className="w-full flex h-full gap-x-[18vw] ml-[18vw] max-[600px]:gap-x-[50vw] max-[600px]:ml-[30vw]">
+              <div className="w-full flex h-full gap-x-[14vw] ml-[14vw] max-[600px]:gap-x-[40vw] max-[600px]:ml-[25vw]">
                 {bottomStages.map((stage) => (
                   <div
                     key={`bottom-${stage.id}`}
-                    className="relative h-full w-[35vw] px-[3vw] max-[600px]:w-[80vw] max-[600px]:px-[7vw]"
+                    className="relative h-full w-[30vw] px-[3vw] max-[600px]:w-[75vw] max-[600px]:px-[7vw]"
                   >
                     <div className="w-full absolute left-0 bottom-[-1%] h-full">
                       <div
